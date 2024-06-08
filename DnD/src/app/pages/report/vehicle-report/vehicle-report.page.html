@@ -1,0 +1,151 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-buttons slot="start">
+        <ion-menu-button color="dark"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Vehicle Report
+      </ion-title>
+      <ion-button expand="block" class="settings" (click)="pdf()">Generate PDF</ion-button>
+      <ion-button color="primary" class="settings" (click)="presentPopover($event)" ion-button icon-only clear>
+        Reports
+        <ion-icon name="document-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-popover #popover [dismissOnSelect]="true" [isOpen]="isOpen" (didDismiss)="isOpen = false">
+      <ng-template>
+     
+          <ion-list>
+            <ion-item (click)="bookingCancel()">Booking Cancellation Report</ion-item>
+            <ion-item (click)="vehicleReport()">Vehicle Report</ion-item>
+            <ion-item (click)="maintenance()">Maintenance Report</ion-item>
+            <ion-item (click)="driverReport()">Driver Report</ion-item>
+            <ion-item (click)="fuelReport()">Fuel Report</ion-item>
+            <ion-item (click)="auditLogReport()">Audit Log Report</ion-item>
+          </ion-list>
+ 
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="type" (ionChange)="tabChange($event)">
+    <ion-button (click)="back()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+    <ion-segment-button value="graphs">
+      <ion-label class="seg">Graphs</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="tables">
+      <ion-label class="seg">Tables</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <br>
+  <br>
+
+  <div id="vehiclePDF">
+    <div [ngSwitch]="type">
+      <div [hidden]="activateTab != 'graphs'">
+
+          <br>
+          <ion-grid>
+            <ion-row>
+              <ion-col sizeLg="6" sizeMd="6" sizeSm="12" sizeXs="12">
+                <br>
+                <br>
+                  <canvas #pieChart class="pieChart"
+                  ></canvas>
+              </ion-col>
+
+              <ion-col sizeLg="6" sizeMd="6" sizeSm="12" sizeXs="12">
+                <br>
+                <ion-row class="the-table">
+                  <ion-col size="6">
+                    <ion-select interface="popover" (ionChange)="pickedYear($event.target.value)" placeholder="Year">
+                      <ion-select-option *ngFor="let year of yearNames" [value]="year">{{year}}</ion-select-option>
+                    </ion-select>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-select interface="popover" (ionChange)="pickedMonth($event.target.value)" disabled="{{!yearSelected}}" placeholder="Month">
+                      <ion-select-option *ngFor="let i = index let month of monthNames" [value]="i">{{month}}</ion-select-option>
+                    </ion-select>
+                  </ion-col>
+                  <!-- <ion-col size="4">
+                    <ion-select interface="popover" (ionChange)="pickedDay($event.target.value)" disabled="{{!monthSelected}}" placeholder="Day">
+                      <ion-select-option *ngFor="let day of daysOfIncidents" [value]="day">{{day}}</ion-select-option>
+                    </ion-select>
+                  </ion-col> -->
+                  <canvas #lineChart>
+                  </canvas>
+                  </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+      </div>
+
+      <div [hidden]="activateTab != 'tables'">
+        <ion-grid>
+          <ion-row class="table">
+            <ion-col size="12">
+              <ion-row>
+                <ion-col sizeLg="4" sizeMd="4" sizeSm="0" sizeXs="0"></ion-col>
+                <ion-col sizeLg="4" sizeMd="4" sizeSm="12" sizeXs="12">
+                  <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+                </ion-col>
+                <ion-col sizeLg="4" sizeMd="4" sizeSm="0" sizeXs="0"></ion-col>
+              </ion-row>
+              <ion-row class="table-main">
+                <ion-col size="12">
+                  <ion-label>Vehicle Report</ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row class="table-header">
+                <ion-col class="table-col" size="2">
+                  <ion-label>Date</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>Driver Name</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>Description</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>Location</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>Registration</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>Vehicle</ion-label>
+                </ion-col>
+
+              </ion-row>
+              <ion-row class="table-row" *ngFor="let i = index let item of incidentReportList | filter : searchTerm" class="table-row">
+                <ion-col class="table-col" size="2">
+                  <ion-label>{{item.date | date:'medium'}}</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>{{item.driver}}</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>{{item.description}}</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>{{locationList[i]}}</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>{{item.registration}}</ion-label>
+                </ion-col>
+                <ion-col class="table-col" size="2">
+                  <ion-label>{{item.manufacturer + " " + item.modelTitle}}</ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>

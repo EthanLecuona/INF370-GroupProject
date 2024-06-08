@@ -1,0 +1,53 @@
+ion-content{
+    text-align: center;
+    align-items: center;
+    .container{
+        margin-top: 2vh;
+        box-shadow: 1px 1px 15px 2px black;
+        border-radius: 50px;
+        align-items: center;
+        
+        .image{
+            width: 240px;
+            height: auto;
+            min-height: 100%;
+            position: relative;
+            background-image: url("https://cdn.dribbble.com/users/2454973/screenshots/15538972/media/157feeb833f34494a6f8a70871fa881f.jpg?compress=1&resize=1000x750&vertical=top");
+            background-size:  cover;
+            padding-left: 4vh;
+        }
+        form{
+            padding: 2vh;
+            .heading{
+                font-size: 2em;
+                text-align: center;
+            }
+            .footer{
+                display: block;
+                ion-button{
+                    display: inline-block;
+                }
+            }
+        }
+        
+       
+  
+    }
+}
+
+#errortext{
+    color: red;
+}
+
+@media screen and (max-width: 768px) {
+    .image{
+        display: none;
+    }
+    
+}
+
+
+
+
+
+

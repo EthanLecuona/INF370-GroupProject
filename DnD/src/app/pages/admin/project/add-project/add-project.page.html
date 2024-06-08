@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','add-project']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add Project</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form class="addProjectForm" [formGroup]="addProjectForm">
+          <label class="title">Add Project</label>
+          <ion-item id="pName">
+            <ion-label position="floating">Project Name</ion-label>
+            <ion-input type="text" formControlName="projectName"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="addProjectForm.get('projectName').invalid && (addProjectForm.get('projectName').dirty || addProjectForm.get('projectName').touched)"class="alert alert-danger">
+            <label id="errortext">Project Name required</label>
+          </div>
+          <br />
+          <ion-item text-wrap id="Description">
+            <ion-label position="floating">Project Description</ion-label>
+            <ion-textarea formControlName="description"></ion-textarea>
+          </ion-item>
+          <br>
+          <div *ngIf="addProjectForm.get('description').invalid && (addProjectForm.get('description').dirty || addProjectForm.get('description').touched)"class="alert alert-danger">
+            <label id="errortext">Project Description required</label>
+          </div>
+          <br />
+          <ion-item>
+            <ion-label position="floating">Company Name</ion-label>
+            <ion-select interface="popover" formControlName="companyId">
+              <ion-select-option  *ngFor="let company of activeCompanies"  value="{{company.companyId}}">{{company.companyName}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <br>
+          <div *ngIf="addProjectForm.get('companyId').invalid && (addProjectForm.get('companyId').dirty || addProjectForm.get('companyId').touched)"class="alert alert-danger">
+            <label id="errortext">Please select a Company</label>
+          </div>
+          <br />
+          <ion-button expand="block" color="success" (click)="presentAlertAdd()">Add</ion-button>
+          <ion-button expand="block" color="primary" href="/admin/project">Cancel</ion-button>
+        </form>  
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+ 
+</ion-content>
+

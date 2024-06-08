@@ -1,0 +1,91 @@
+<ion-header>  
+  <ion-toolbar>  
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','vehicle-main']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <div class="header">
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>  
+    <ion-title>  
+      Vehicle 
+    </ion-title>  
+    <ion-button class="settings" id="popover-button" ion-button icon-only clear>
+      <ion-icon name="settings-outline"></ion-icon>
+    </ion-button>
+    </div>
+
+    <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item [button]="true" [detail]="false" href="admin/vehicle/add-vehicle">Add Vehicle</ion-item>
+            <ion-item [button]="true" [detail]="false" href="admin/vehicle/vehicle-class">Add vehicle class</ion-item>
+            <ion-item [button]="true" [detail]="false" href="admin/vehicle/manufacturer-model">Manufacturer and model</ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>   
+</ion-header>
+
+<ion-content class="background" [fullscreen]="true">
+  <ion-row>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+      <ion-searchbar class="search" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+    </ion-col>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+  </ion-row>
+  <ion-grid class="table">
+    <ion-row>
+      <ion-col size="12">
+          <ion-grid  class="ion-text-center">
+            <ion-row class="table-main">
+              <ion-col size="12">
+                <ion-title>
+                  <ion-text color="default" >Vehicle</ion-text>
+                </ion-title>
+              </ion-col>
+            </ion-row>
+            <ion-row class="table-header">
+              <ion-col class="table-col" size="2.4">
+                <ion-text>Vehicle Registration Number</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>Vehicle Manufacturer</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>Vehicle Model</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>Vehicle Class</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>Edit Vehicle</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="table-row" *ngFor="let vehicle of activatedVehicles | filter: searchTerm">
+              <ion-col class="table-col" size="2.4">
+                <ion-text>{{vehicle.registrationNumber}}</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>{{vehicle.manufacturerName}}</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>{{vehicle.modelName}}</ion-text> 
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>{{vehicle.className}}</ion-text> 
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                  <ion-button expand="block" color="primary" [routerLink]="['edit-vehicle', vehicle.regID]">Edit</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

@@ -1,0 +1,62 @@
+ion-content{
+  text-align: center;
+  align-items: center;
+  .addManufacturerForm{
+    margin-top: 2vh;
+    border-radius: 15px;
+    box-shadow: 2px 2px 15px 5px black;
+    padding: 2vh;
+  }
+  ion-grid{
+      --ion-grid-column-padding: 1vh;
+  }
+  .title{
+      font-size: 1.2rem;
+      padding-top: 2vh;
+  }
+  ion-item{
+      padding-top: 1vh;
+      padding-bottom: 1vh;
+  }
+}
+  .table {
+
+    margin: 2vh;
+    // border-collapse: collapse;
+    border-style: hidden;
+
+    .table-main{
+      width: 100%;
+      align-items: center;
+      background-color: #001844;
+      font-weight: bold;
+      width: 100%;
+      color: white;
+      
+    }
+    .table-header{
+      background-color: #869ec3;
+      ion-text{
+        display: inline-block;
+      }
+    }
+    .table-col{
+      border: 1px solid black;
+      border-bottom: 0.7;
+      border-right: 0;
+    }
+    .table-col:last-child{
+      border-right: 1px solid black;
+    }
+
+    .table-row:last-child{
+      border-bottom: 1px solid black;
+    }
+
+  }
+
+@media screen and (max-width: 768px) {
+  .spacer{
+      --ion-grid-column-padding: 0px;
+  }
+}

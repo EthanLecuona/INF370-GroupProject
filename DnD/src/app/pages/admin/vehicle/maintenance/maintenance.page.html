@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','maintenance-main']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons> 
+    <div class="header">
+      <ion-buttons slot="start">  
+        <ion-menu-button color="dark"></ion-menu-button>   
+      </ion-buttons> 
+
+      <ion-title>Maintenance</ion-title>
+      <ion-button class="settings" id="popover-button" ion-button icon-only clear><ion-icon name="settings-outline"></ion-icon></ion-button>
+    </div>
+    <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+      <ng-template>
+        <ion-content>
+          <ion-item [button]="true" [detail]="false" href="admin/vehicle/maintenance/add-maintenance">Add Maintenance</ion-item>
+          <ion-item [button]="true" [detail]="false" href="admin/vehicle/maintenance/add-mechanic">Add Mechanic</ion-item>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-segment [(ngModel)]="type" (ionChange)="tabChange($event)">
+    <ion-segment-button class="seg-btn" value="confirmed">
+      <ion-label class="seg">Confirmed</ion-label>
+    </ion-segment-button>
+    <ion-segment-button class="seg-btn" value="scheduled">
+      <ion-label class="seg">Scheduled</ion-label>
+    </ion-segment-button>
+    <ion-segment-button class="seg-btn" value="past">
+      <ion-label class="seg">Past</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="type">
+    <div *ngIf="activateTab == 'confirmed'">
+      <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="tbdSearchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      <form id="addMaintenanceForm">
+        <ion-grid class="ion-text-center table">
+          <ion-row class="table-main">
+            <ion-col size="12">
+              <ion-text>Maintenance to be Confirmed</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-header">
+            <ion-col class="table-col" size="3">
+              <ion-text>Registration Number</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>Maintenance Date</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>Mechanic Name</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>Confirm Maintenance</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-row"  *ngFor="let main of tbcMaintenanceList | filter: tbdSearchTerm let i = index">
+            <ion-col class="table-col" size="3">
+              <ion-text>{{main.regNumber}} {{main.manufacturerName}} {{main.modelName}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>{{main.date.split('T')[0]}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>{{main.mechanic}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+             <ion-button expand="block" color="success" (click)="presentAlertConfirm(main.mainID, i)" >Confirm</ion-button>
+             <ion-button expand="block" color="danger" (click)="presentDeleteAlert(main.mainID, i)" >Delete maintenance</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </div>
+
+
+
+    <div *ngIf="activateTab == 'scheduled'">
+      <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="currentSearchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      <form id="addMaintenanceForm">
+        <ion-grid id="companyGrid" class="ion-text-center table">
+          <ion-row class="table-main">
+            <ion-col size="12">
+              <ion-title>
+                <ion-text color="default" >Scheduled Maintenance</ion-text>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-header">
+            <ion-col class="table-col" size="3">
+              <ion-text>Registration Number</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>Maintenance Date</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>Mechanic Name</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>Remove Maintenance</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-row"  *ngFor="let main of currentMaintenanceList | filter: currentSearchTerm let i = index">
+            <ion-col class="table-col" size="3">
+              <ion-text>{{main.regNumber}} {{main.manufacturerName}} {{main.modelName}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>{{main.date.split('T')[0]}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+              <ion-text>{{main.mechanic}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="3">
+             <ion-button expand="block" color="danger" (click)="presentAlert(main.mainID, i)" >Delete maintenance</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </div>
+
+
+
+    <div *ngIf="activateTab == 'past'">
+      <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="pastSearchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      <form id="addMaintenanceForm">
+        <ion-grid id="companyGrid" class="ion-text-center table">
+          <ion-row class="table-main">
+            <ion-col size="12">
+              <ion-title>
+                <ion-text color="default" >Past Maintenance</ion-text>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-header">
+            <ion-col class="table-col" size="4">
+              <ion-text>Registration Number</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="4">
+              <ion-text>Maintenance Date</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="4">
+              <ion-text>Mechanic Name</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-row" *ngFor="let main of pastMaintenanceList | filter: pastSearchTerm let i = index">
+            <ion-col class="table-col" size="4">
+              <ion-text>{{main.regNumber}} {{main.manufacturerName}} {{main.modelName}}</ion-text>
+            </ion-col >
+            <ion-col class="table-col" size="4">
+              <ion-text>{{main.date.split('T')[0]}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="4">
+              <ion-text>{{main.mechanic}}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </div>
+  </div>
+
+</ion-content>

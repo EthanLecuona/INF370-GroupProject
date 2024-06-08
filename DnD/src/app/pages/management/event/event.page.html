@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','event']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-button color="success" (click)="addEvent()"><ion-icon name="add-outline"></ion-icon> &nbsp; Add Event</ion-button>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="3" sizeMd="2" sizeSm="2" sizeXs="0"></ion-col>
+      <ion-col sizeLg="6" sizeMd="8" sizeSm="8" sizeXs="12">
+        <ion-grid class="ion-text-center table">
+          <ion-row class="table-main">
+            <ion-col size="12">
+              <ion-title>
+                <ion-text id="eventHeading" color="default">Created Events</ion-text>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-header">
+            <ion-col class="table-col" size="2">
+              <ion-text>No. Employees Attending</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="2">
+              <ion-text>Description</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="2">
+              <ion-text>Location</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="2">
+              <ion-text>Date of Event</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="4">
+              
+            </ion-col>
+          </ion-row>
+    
+          <ion-row class="table-row" *ngFor="let event of eventInfo | filter: searchTerm">
+            <ion-col class="table-col" size="2">
+              <br>
+              <ion-text>{{event.numberOfEmployees}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="2">
+              <br>
+              <ion-text>{{event.description}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="2">
+              <br>
+              <ion-text>{{event.location}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="2">
+              <br>
+              <ion-text>{{event.eventDate}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="4">
+              <ion-button expand="block" color="success" [routerLink]="['view-event', event.eventId]">View</ion-button>
+              <ion-button expand="block" color="warning" [routerLink]="['edit-event', event.eventId]">Edit</ion-button>
+              <ion-button expand="block" color="danger" [routerLink]="['delete-event', event.eventId]">Delete</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col sizeLg="3" sizeMd="2" sizeSm="2" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>

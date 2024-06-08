@@ -1,0 +1,34 @@
+ion-content{
+    text-align: center;
+    align-items: center;
+  }
+  .table {
+    --ion-grid-column-padding: 10px;
+    border-collapse: collapse;
+    border-style: hidden;
+    .table-main{
+      width: 100%;
+      align-items: center;
+      background-color: #001844;
+      font-weight: bold;
+      width: 100%;
+      color: white;
+
+    }
+    .table-header{
+      background-color: #869ec3;
+    }
+    .table-col{
+      border: 1px solid black;
+      border-bottom: 0.7;
+      border-right: 0;
+    }
+    .table-col:last-child{
+      border-right: 1px solid black;
+    }
+
+    .table-row:last-child{
+      border-bottom: 1px solid black;
+    }
+
+  }

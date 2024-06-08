@@ -1,0 +1,28 @@
+ion-content{
+    text-align: center;
+    align-items: center;
+    .editFuelPriceForm{
+        box-shadow: 2px 2px 15px 5px black;
+        border-radius: 15px;
+        padding: 2vh;
+        margin-top: 2vh;
+        .title{
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        ion-item{
+            margin-top: 1vh;
+            margin-bottom: 2vh;
+        }
+    }
+}
+@media (max-width: 768px) {
+    ion-grid{
+        padding: 0;
+        margin: 0;
+    }
+    .table-spacer{
+        padding: 0;
+        
+    }
+}

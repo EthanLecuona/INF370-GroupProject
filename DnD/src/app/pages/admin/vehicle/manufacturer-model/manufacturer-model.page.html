@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>  
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','man-main']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Manufacturer and Model</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-button expand="block" color="primary" href="admin/vehicle/manufacturer-model/manufacturer">Manufacturers</ion-button> 
+        <ion-button expand="block" color="primary" href="admin/vehicle/manufacturer-model/model">Model</ion-button>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+  
+        <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col sizeLg="3" sizeMd="2" sizeSm="2" sizeXs="0"></ion-col>
+      <ion-col sizeLg="6" sizeMd="8" sizeSm="8" sizeXs="12">
+        <ion-grid class="ion-text-center table">
+          <ion-row class="table-main">
+            <ion-col>
+              <ion-title>
+                <ion-text color="default" >Vehicle</ion-text>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+            <ion-row class="table-header">
+            <ion-col class="table-col" size="6">
+              <ion-text>Vehicle Manufacturer</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="6">
+              <ion-text>Vehicle Model</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-row" *ngFor="let vehicle of MakeModelList | filter: searchTerm">
+            <ion-col class="table-col" size="6">
+              <ion-text>{{vehicle.makeTitle}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="6">
+              <ion-text>{{vehicle.modelTitle}}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col sizeLg="3" sizeMd="2" sizeSm="2" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

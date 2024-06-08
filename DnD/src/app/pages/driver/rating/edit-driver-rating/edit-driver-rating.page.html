@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','edit-driver-rating']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Edit Driver Rating</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <form [formGroup]="editRatingForm" class="editRatingForm">
+    <label id="label" class="text-center" font-weight="bold">Edit Rating</label>
+    <br>
+    <br>
+    <ion-item >
+      <ion-label position="floating">Ratings</ion-label>
+      <ion-select interface="popover" formControlName="rating" (ngModelChange)="modChange($event)">
+        <ion-select-option  *ngFor="let rt of ratingsList" value="{{rt.rating1}}">{{rt.rating1}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+      <div *ngIf="editRatingForm.get('rating').invalid && (editRatingForm.get('rating').dirty || editRatingForm.get('rating').touched)"class="alert alert-danger">
+        <label id="errortext">Select a Rating.</label>
+      </div>
+    <br>
+    <ion-button class="Button" color="success" (click)="editRatingAlert()" [disabled]="!editRatingForm.valid">Edit</ion-button>
+    <ion-button class="Button" color="primary" href="/driver/rating/add-driver-rating">Cancel</ion-button>
+   
+
+ 
+  </form>
+</ion-content>

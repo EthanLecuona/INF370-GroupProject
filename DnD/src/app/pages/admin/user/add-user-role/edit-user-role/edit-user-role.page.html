@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Edit User Roles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="editRoleForm" class="editUserForm">
+          <ion-label class="title">Edit User Role</ion-label>
+          <ion-item>
+            <ion-label position="floating">User Role Name</ion-label>
+            <ion-input type="text" formControlName="role"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="editRoleForm.get('role').invalid && (editRoleForm.get('role').dirty || editRoleForm.get('role').touched)"class="alert alert-danger">
+            <label id="errortext">Role name may only contain letters</label>
+          </div>
+          <br>
+            <ion-button expand="block" color="secondary" [disabled]="!editRoleForm.valid" (click)="editAlert()">Edit</ion-button>
+            <ion-button expand="block" id="cancelBtn" (click)="removeAlert()" color="danger">Remove</ion-button>
+            <ion-button expand="block" href="/admin/user/add-user-role" id="cancelBtn" color="primary">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+

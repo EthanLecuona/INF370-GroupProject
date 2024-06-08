@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','company-main']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Company</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-button expand="block" color="success" [routerLink]="['add-company']">Add Company</ion-button> 
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-grid id="companyGrid" class="ion-text-center table">
+          <ion-row class="table-main">
+            <ion-col>
+              <ion-title>
+                <ion-text color="default" >Existing Companies</ion-text>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+            <ion-row class="table-header">
+            <ion-col class="table-col" size="6">
+              <ion-text>Company Name</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="6">
+              <ion-text>View Company</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-row" *ngFor="let comp of companyList | filter: searchTerm">
+            <ion-col class="table-col" size="6">
+              <ion-text>{{comp.companyName}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="6">
+              <ion-button expand="block" color="primary" [routerLink]="['view-company', comp.companyId]">View Company</ion-button>
+              <ion-button expand="block" color="secondary" [routerLink]="['edit-company', comp.companyId]">Edit Company</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','license']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add License</ion-title>
+  </ion-toolbar>
+</ion-header>
+    
+    
+<ion-content>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" color="success" href="/driver/license/add-licenscode">Add License Code</ion-button> 
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="addLicensForm" class="table">
+          <label class="title" font-weight="bold">Add License</label>
+
+          <ion-item >
+            <ion-label position="floating">Driver Name</ion-label>
+              <ion-select interface="popover" formControlName="driverId" >
+                <ion-select-option  *ngFor="let d of availableDriverList let i = index" value="{{[d.id]}}">{{d.firstname}} {{d.lastname}}</ion-select-option>
+              </ion-select>
+          </ion-item>
+          <br>
+          <div *ngIf="addLicensForm.get('driverId').invalid && (addLicensForm.get('driverId').dirty || addLicensForm.get('driverId').touched)"class="alert alert-danger">
+            <label id="errortext">Select a Driver.</label>
+          </div>
+
+          <ion-item >
+            <ion-label position="floating">License Code</ion-label>
+            <ion-select interface="popover" formControlName="licensecodeId" >
+            <ion-select-option  *ngFor="let c of codesList let i = index" value="{{[c.licenseCodeId]}}">{{c.licenseCode1}}</ion-select-option>
+          </ion-select>
+          </ion-item>
+          <br>
+          <div *ngIf="addLicensForm.get('licensecodeId').invalid && (addLicensForm.get('licensecodeId').dirty || addLicensForm.get('licensecodeId').touched)"class="alert alert-danger">
+            <label id="errortext">License code required.</label>
+          </div>
+
+          <ion-item >
+            <ion-label position="floating">Description </ion-label>
+            <ion-input type="text" formControlName="description"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="addLicensForm.get('description').invalid && (addLicensForm.get('description').dirty || addLicensForm.get('description').touched)"class="alert alert-danger">
+            <label id="errortext">Description required.</label>
+          </div>
+
+          <ion-item >
+            <ion-label position="fixes">Expiration Date </ion-label>
+            <ion-datetime presentation="date" formControlName="expDate" displayFormat="YYYY/MM/DD" showDefaultTimeLabel="{{false}}" min="{{CurrentDate}}" max="2030" [ngModel]="date"></ion-datetime>
+          </ion-item>
+          <br>
+          <div *ngIf="addLicensForm.get('expDate').invalid && (addLicensForm.get('expDate').dirty || addLicensForm.get('expDate').touched)"class="alert alert-danger">
+            <label id="errortext">Expiration Date required.</label>
+          </div>
+
+          <ion-item >
+            <ion-label position="floating">License Number </ion-label>
+            <ion-input type="text" formControlName="licenseNumber"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="addLicensForm.get('licenseNumber').invalid && (addLicensForm.get('licenseNumber').dirty || addLicensForm.get('licenseNumber').touched)"class="alert alert-danger">
+            <label id="errortext">License number required.</label>
+          </div>
+
+          <ion-item>
+            <ion-label  position="floating">Rating</ion-label>
+            <br>
+            <!-- <ion-select interface="popover" formControlName="ratingId" >
+              <ion-select-option  readonly *ngFor="let r of ratingList let i = index" value="{{[r.ratingId]}}">{{r.rating1}}</ion-select-option>
+             
+            </ion-select> -->
+            <ion-input formControlName="ratingId" readonly="true">5</ion-input>
+          </ion-item>
+          <br>
+          <!-- <div *ngIf="addLicensForm.get('ratingId').invalid && (addLicensForm.get('ratingId').dirty || addLicensForm.get('ratingId').touched)"class="alert alert-danger">
+            <label id="errortext">Rating required.</label>
+          </div> -->
+
+          <ion-item>
+            <ion-label position="floating">Assign Vehicle</ion-label>
+            <ion-select interface="popover" formControlName="registrationId" >
+              <ion-select-option  *ngFor="let aV of availableVehicleList let i = index" value="{{aV.registrationId}}">{{aV.registrationNumber}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <br>
+          <div *ngIf="addLicensForm.get('registrationId').invalid && (addLicensForm.get('registrationId').dirty || addLicensForm.get('registrationId').touched)"class="alert alert-danger">
+            <label id="errortext">Vehicle required. </label>
+          </div>
+          <ion-button expand="block" color="success" [disabled]="!addLicensForm.valid" (click)="addAlert()">Add</ion-button>
+          <ion-button expand="block" color="primary" href="/driver">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

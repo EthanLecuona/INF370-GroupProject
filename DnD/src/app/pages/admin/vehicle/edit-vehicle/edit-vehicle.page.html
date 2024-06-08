@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>  
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','edit-vehicle']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Edit Delivery Vehicle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+<!-- <form [formGroup]="editVehicleForm" id="editVehicleForm">
+  <label id="label" class="text-center" font-weight="bold">Edit Delivery Vehicle</label>
+  <br>
+  <br>
+  <ion-item >
+    <ion-label position="floating">Registration Number</ion-label>
+    <ion-input type="text" formControlName="vehicleRegistration"></ion-input>
+  </ion-item>
+  <br>
+    <div *ngIf="editVehicleForm.get('vehicleRegistration').invalid && (editVehicleForm.get('vehicleRegistration').dirty || editVehicleForm.get('vehicleRegistration').touched)"class="alert alert-danger">
+      <label id="errortext">A vehicle registration number must contain at least 8 characters and end in the province code.</label>
+    </div>
+  <br>
+  <ion-item >
+    <ion-select  interface="popover" formControlName="vehicleManufacturer" (ngModelChange)="manChange($event)">
+      <ion-select-option  *ngFor="let vMake of vehicleMake" value="{{vMake.manufacturerTitle}}">{{vMake.manufacturerTitle}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <br>
+    <div *ngIf="editVehicleForm.get('vehicleManufacturer').invalid && (editVehicleForm.get('vehicleManufacturer').dirty || editVehicleForm.get('vehicleManufacturer').touched)"class="alert alert-danger">
+      <label id="errortext">A vehicle manufacturer can only contain letters.</label>
+    </div>
+  <br>
+  <ion-item >
+    <ion-select  interface="popover" formControlName="vehicleModel" (ngModelChange)="modChange($event)">
+      <ion-select-option  *ngFor="let vModel of modelList"  value="{{vModel.modelTitle}}">{{vModel.modelTitle}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+    <div *ngIf="editVehicleForm.get('vehicleModel').invalid && (editVehicleForm.get('vehicleModel').dirty || editVehicleForm.get('vehicleModel').touched)"class="alert alert-danger">
+      <label id="errortext">A vehicle model can only contain letters and numbers.</label>
+    </div>
+  <br>
+  <ion-item >
+    <ion-label position="floating">Vehicle Purchase Date</ion-label>
+    <ion-datetime presentation="date" formControlName="vehiclePurchaseDate" displayFormat="YYYY/MM/DD" showDefaultTimeLabel="{{false}}"  max="{{CurrentDate}}"></ion-datetime>
+  </ion-item>
+  <br>
+    <div *ngIf="editVehicleForm.get('vehiclePurchaseDate').invalid && (editVehicleForm.get('vehiclePurchaseDate').dirty || editVehicleForm.get('vehiclePurchaseDate').touched)"class="alert alert-danger">
+      <label id="errortext">The purchase date of the vehicle must be inputted in the following manner YYYY/MM/DD</label>
+    </div>
+  <br>
+  <ion-item>
+    <ion-label position="floating">Vehicle Class</ion-label>
+    <ion-select interface="popover" formControlName="vehicleClassName" (ngModelChange)="classChange($event)">
+      <ion-select-option  *ngFor="let v of vehicleClassID"  value="{{v.description}}">{{v.description}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <ion-button id="Button" color=" rgb(141, 181, 216)" (click)="editVehicle()" [disabled]="!editVehicleForm.valid">Edit</ion-button>
+  <ion-button id="Button" color=" rgb(141, 181, 216)" href="vehicle">Cancel</ion-button>
+  <ion-button id="Button" color=" rgb(141, 181, 216)" (click)="delVehicle()" color="danger">Deactivate</ion-button>
+  <div *ngIf="av == true">
+    <ion-button id="Button" color=" rgb(141, 181, 216)" (click)="setAvailabilityAlert()" color="danger">Make Unavailable </ion-button>
+  </div>
+  <div *ngIf="av == false">
+    <ion-button id="Button" color=" rgb(141, 181, 216)" (click)="setAvailabilityAlert()" color="success">Make Available</ion-button>
+  </div>
+ 
+</form> -->
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="editVehicleForm" class="editVehicleForm">
+          <label class="title" font-weight="bold">Edit Delivery Vehicle</label>
+          <ion-item >
+            <ion-label position="floating">Registration Number</ion-label>
+            <ion-input type="text" formControlName="vehicleRegistration"></ion-input>
+          </ion-item>
+            <div *ngIf="editVehicleForm.get('vehicleRegistration').invalid && (editVehicleForm.get('vehicleRegistration').dirty || editVehicleForm.get('vehicleRegistration').touched)"class="alert alert-danger">
+              <label id="errortext">A vehicle registration number must contain at least 8 characters and end in the province code.</label>
+            </div>
+          <ion-item >
+            <ion-label position="floating">Vehicle Manufacturer</ion-label>
+            <ion-select  interface="popover" formControlName="vehicleManufacturer" (ngModelChange)="manChange($event)">
+              <ion-select-option  *ngFor="let vMake of vehicleMake" value="{{vMake.manufacturerTitle}}">{{vMake.manufacturerTitle}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+            <div *ngIf="editVehicleForm.get('vehicleManufacturer').invalid && (editVehicleForm.get('vehicleManufacturer').dirty || editVehicleForm.get('vehicleManufacturer').touched)"class="alert alert-danger">
+              <label id="errortext">A vehicle manufacturer can only contain letters.</label>
+            </div>
+          <ion-item >
+            <ion-label position="floating">Vehicle Model</ion-label>
+            <ion-select  interface="popover" formControlName="vehicleModel" (ngModelChange)="modChange($event)">
+              <ion-select-option  *ngFor="let vModel of modelList"  value="{{vModel.modelTitle}}">{{vModel.modelTitle}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+            <div *ngIf="editVehicleForm.get('vehicleModel').invalid && (editVehicleForm.get('vehicleModel').dirty || editVehicleForm.get('vehicleModel').touched)"class="alert alert-danger">
+              <label id="errortext">A vehicle model can only contain letters and numbers.</label>
+            </div>
+            <ion-label position="floating">Vehicle Purchase Date</ion-label>
+          <ion-item >
+            <ion-datetime presentation="date" formControlName="vehiclePurchaseDate" displayFormat="YYYY/MM/DD" showDefaultTimeLabel="{{false}}"  max="{{CurrentDate}}"></ion-datetime>
+          </ion-item>
+            <div *ngIf="editVehicleForm.get('vehiclePurchaseDate').invalid && (editVehicleForm.get('vehiclePurchaseDate').dirty || editVehicleForm.get('vehiclePurchaseDate').touched)"class="alert alert-danger">
+              <label id="errortext">The purchase date of the vehicle must be inputted in the following manner YYYY/MM/DD</label>
+            </div>
+          <ion-item>
+            <ion-label position="floating">Vehicle Class</ion-label>
+            <ion-select interface="popover" formControlName="vehicleClassName" (ngModelChange)="classChange($event)">
+              <ion-select-option  *ngFor="let v of vehicleClassID"  value="{{v.description}}">{{v.description}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-button expand="block" color="secondary" (click)="editVehicleAlert()" [disabled]="!editVehicleForm.valid">Edit</ion-button>
+          <ion-button expand="block" color="primary" href="admin/vehicle">Cancel</ion-button>
+          <ion-button expand="block" color="danger" (click)="delVehicle()" color="danger">Deactivate</ion-button>
+          <div *ngIf="av == true">
+            <ion-button expand="block" color="warning" (click)="setAvailabilityAlert()">Make Unavailable </ion-button>
+          </div>
+          <div *ngIf="av == false">
+            <ion-button expand="block" color="success" (click)="setAvailabilityAlert()">Make Available</ion-button>
+          </div>
+         
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

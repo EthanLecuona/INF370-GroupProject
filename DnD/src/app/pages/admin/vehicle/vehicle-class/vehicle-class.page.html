@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','vehicle-class-main']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add Vehicle Class</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="addVehicleClass" class="addVehicleForm" (ngSubmit)="addClass()">
+          <label class="title" font-weight="bold">Add Vehicle Class</label>
+          <br>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Vehicle Class Name:</ion-label>
+            <ion-input class="form-control" type="text" formControlName="description"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="addVehicleClass.get('description').invalid && (addVehicleClass.get('description').dirty || addVehicleClass.get('description').touched)"class="alert alert-danger">
+            <label id="errortext">A vehicle class can only contain letters.</label>
+          </div>
+          <br>
+            <ion-button expand="block" color="success" [disabled]="!addVehicleClass.valid" (click)="addClassAlert()">Add</ion-button>
+            <ion-button expand="block" color="primary" href="admin/vehicle">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="2" sizeSm="2" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="8" sizeSm="8" sizeXs="12">
+          <ion-searchbar placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="2" sizeSm="2" sizeXs="0"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="2" sizeSm="2" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="2" sizeSm="8" sizeXs="12">
+        <ion-grid class="ion-text-center table">
+          <ion-row >
+            <ion-col size="2"></ion-col>
+            <ion-col class="table-main" size="12">
+              <ion-title>
+                <ion-text color="default" >Vehicle Classes</ion-text>
+              </ion-title>
+            </ion-col>
+            <ion-col size="2"></ion-col>
+          </ion-row>
+          <ion-row>
+    
+            <ion-col class="table-col table-header" size="6">
+              <ion-text>Vehicle Class</ion-text>
+            </ion-col>
+            <ion-col class="table-col table-header" size="6">
+              <ion-text>Remove Vehicle Class</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-row" *ngFor="let vehicle of classList | filter: searchTerm">
+
+            <ion-col size="6" class="table-col">
+              <ion-text>{{vehicle.description}}</ion-text>
+            </ion-col>
+            <ion-col size="6" class="table-col">
+              <ion-button expand="block" color="danger" (click)="deleteClassAlert(vehicle.vehicleClassId)" color="danger">Delete</ion-button>
+            </ion-col>
+         
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="2" sizeSm="2" sizeXs="0"></ion-col>
+    </ion-row>
+</ion-grid>
+
+</ion-content>

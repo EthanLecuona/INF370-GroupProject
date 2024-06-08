@@ -1,0 +1,154 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','fuel-price-main']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Fuel Price</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="this.userService.userRole == 'driver'" >
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+        <ion-col sizeLg="4" sizeMd="6" sizeSm="6" sizeXs="12">
+          <form [formGroup]="addFuelForm" class="fuelPriceForm">
+            <ion-row>
+              <ion-col sizeLg="2" sizeMd="2" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+              <ion-col class="addFuelPriceForm" sizeLg="8" sizeMd="8" sizeSm="8" sizeXs="12">
+                <label class="title" font-weight="bold">Add Fuel Price</label>
+                <br>
+                <br>
+                <ion-item >
+                  <ion-label position="floating">Price</ion-label>
+                  <ion-input  type="number" formControlName="Price"></ion-input>
+                </ion-item>
+                <br>
+                <div *ngIf="addFuelForm.get('Price').invalid && (addFuelForm.get('Price').dirty || addFuelForm.get('Price').touched)"class="alert alert-danger">
+                  <label id="errortext">Price required.</label>
+                </div>
+                <br>
+                <ion-item >
+                  <ion-label position="floating">Liters</ion-label>
+                  <ion-input type="number" formControlName="Liters"></ion-input>
+                </ion-item>
+                <br>
+                <div *ngIf="addFuelForm.get('Liters').invalid && (addFuelForm.get('Liters').dirty || addFuelForm.get('Liters').touched)"class="alert alert-danger">
+                  <label id="errortext">Liters required.</label>
+                </div>
+                <br>
+                <ion-item>
+                  <ion-label>Tyres Checked</ion-label>
+                  <ion-checkbox (click)="addTyrePressure($event)" checked="false" ></ion-checkbox>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Take Picture</ion-label>
+                  <ion-button (click)="takePicture()"><ion-icon name="camera"></ion-icon></ion-button>
+                </ion-item>
+                <br>
+                <br>
+              </ion-col>
+              <ion-col sizeLg="2" sizeMd="2" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+            </ion-row>
+             <br>
+            <ion-button expand="block" color="success" (click)="addFuelAlert()" [disabled]="!addFuelForm.valid">Add</ion-button>   
+            <ion-button expand="block" color="primary" href="/driver">Cancel</ion-button>
+          </form>
+        </ion-col>
+        <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+        <ion-col sizeLg="4" sizeMd="6" sizeSm="6" sizeXs="12">
+          <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+        </ion-col>
+        <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="the-table">
+          <ion-grid id="companyGrid" class="ion-text-center table">
+            <ion-row class="table-main">
+              <ion-col>
+                <ion-title>
+                  <ion-text color="default" >My Fuel</ion-text>
+                </ion-title>
+              </ion-col>
+            </ion-row>
+              <ion-row class="table-header">
+              <ion-col class="table-col" size="6">
+                <ion-text>Date</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="6">
+                <ion-text>Fuel Price</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="table-row" *ngFor="let fuel of driverFuelPrice | filter: searchTerm">
+              <ion-col class="table-col" size="6">
+                <ion-text>{{fuel.timeStamp.split('T')[0]}}</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="6">
+                <ion-text>R {{(fuel.litres * fuel.price).toFixed(2)}} </ion-text>
+              </ion-col>      
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+      
+<div *ngIf="this.userService.userRole == 'admin'" >
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="8" sizeXs="12">
+        <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-grid class="ion-text-center table">
+        <ion-row class="table-main">
+          <ion-col>
+            <ion-title>
+              <ion-text>Driver Fuel</ion-text>
+            </ion-title>
+          </ion-col>
+        </ion-row>
+          <ion-row class="table-header">
+          <ion-col class="table-col" size="3">
+            <ion-text>Driver</ion-text>
+          </ion-col>
+          <ion-col class="table-col" size="3">
+            <ion-text>Date</ion-text>
+          </ion-col>
+          <ion-col class="table-col" size="3">
+            <ion-text>Fuel Price</ion-text>
+          </ion-col>
+          <ion-col class="table-col" size="3">
+            <ion-text>View Fuel Price</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row class="table-row" *ngFor="let fuel of fuelList | filter: searchTerm let i = index">
+          <ion-col class="table-col" size="3">
+            <ion-text>{{fuel.firstName}} {{fuel.lastName}}</ion-text>
+          </ion-col>
+          <ion-col class="table-col" size="3">
+            <ion-text>{{fuel.date.split('T')[0]}}</ion-text>
+          </ion-col>
+          <ion-col class="table-col" size="3">
+            <ion-text>R {{(totalPrice[i].toFixed(2))}} </ion-text>
+          </ion-col>
+          <ion-col class="table-col" size="3">
+            <ion-button expand="block" color="primary"  [routerLink]="['edit-fuel-price', fuel.fuelID]">View Fuel Price</ion-button>
+          </ion-col>        
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+  </ion-grid>
+</div> 
+</ion-content>

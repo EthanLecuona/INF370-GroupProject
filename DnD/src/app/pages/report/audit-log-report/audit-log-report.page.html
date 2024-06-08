@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-buttons slot="start">
+        <ion-menu-button color="dark"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Audit Log Report
+      </ion-title>
+      <ion-button expand="block" class="settings" (click)="pdf()">Generate PDF</ion-button>
+      <ion-button expand="block" class="settings" (click)="excel()">Export To Excel</ion-button>
+      <ion-button color="primary" class="settings" (click)="presentPopover($event)" ion-button icon-only clear>
+        Reports
+        <ion-icon name="document-outline"></ion-icon>
+      </ion-button>
+
+    <ion-popover #popover [dismissOnSelect]="true" [isOpen]="isOpen" (didDismiss)="isOpen = false">
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item (click)="bookingCancel()">Booking Cancellation Report</ion-item>
+            <ion-item (click)="vehicleReport()">Vehicle Report</ion-item>
+            <ion-item (click)="maintenance()">Maintenance Report</ion-item>
+            <ion-item (click)="driverReport()">Driver Report</ion-item>
+            <ion-item (click)="fuelReport()">Fuel Report</ion-item>
+            <ion-item (click)="auditLogReport()">Audit Log Report</ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+      </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-grid >
+      <ion-row>
+        <ion-col size="4"></ion-col>
+        <ion-col size="4">
+          <ion-button class="backButton" (click)="back()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size="4"></ion-col>
+      </ion-row>
+      <br>
+      <ion-row class="table">
+        <ion-col class="the-table" size="12">
+          <ion-row>
+            <ion-col sizeLg="4" sizeMd="4" sizeSm="0" sizeXs="0"></ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSm="12" sizeXs="12">
+              <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+            </ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSm="0" sizeXs="0"></ion-col>
+          </ion-row>
+          <div id="forPDF">
+            <ion-row class="table-main">
+              <ion-col size="12">
+                <ion-label>Audit Log Report</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row class="table-header">
+              <ion-col class="table-col" size="4">
+                <ion-label>User Name</ion-label>
+              </ion-col>
+              <ion-col class="table-col" size="4">
+                <ion-label>Audit Log Type</ion-label>
+              </ion-col>
+              <ion-col class="table-col" size="4">
+                <ion-label>Date</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row ngClass="table-row" *ngFor="let item of AuditLogReportList | filter: searchTerm" class="table-row">
+              <ion-col class="table-col" size="4">
+                <ion-label class="table-data-item">{{item.user}}</ion-label>
+              </ion-col>
+              <ion-col class="table-col" size="4">
+                <ion-label class="table-data-item">{{item.description}}</ion-label>
+              </ion-col>
+              <ion-col class="table-col" size="4">
+                <ion-label class="table-data-item">{{item.date}}</ion-label>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

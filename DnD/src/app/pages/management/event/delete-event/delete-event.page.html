@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','delete-event']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Delete Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col class="container" sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="deleteEventForm" class="deleteEventForm">
+
+          <h1 id="label" class="text-center" font-weight="bold">Delete Event</h1>
+          <br>
+          <div id="eventCard">
+          <ion-item color="white" lines="none">
+            <ion-label position="floating">Number of Employees</ion-label>
+            <ion-input value="number" formControlName="numberOfEmployees" min="1" readonly="true"></ion-input>
+          </ion-item>
+          <br>
+          <ion-item color="white" lines="none">
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea formControlName="description" max="200" min="1" readonly="true"></ion-textarea>
+          </ion-item>
+          <br>
+          <ion-item color="white" lines="none">
+            <ion-label position="floating">Location</ion-label>
+            <ion-textarea formControlName="location" max="100" min="1" readonly="true"></ion-textarea>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-datetime color="dark" class="calendar" formControlName="EventDate" displayFormat="YYYY/MM/DD" presentation="date-time" min="{{currentDate}}" [(ngModel)]="newDate">
+            </ion-datetime>
+          </ion-item>
+          <br>
+          <ion-button class="button" color="success" [disabled]="!deleteEventForm.valid" (click)="deleteEvent()">Delete Event</ion-button>
+          <ion-button class="button" color="danger" (click)="Cancel()">Cancel</ion-button>
+        </div>
+          </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+    
+    <!-- <div>
+      <br>
+      <img id="eventPic" src="https://blush.design/api/download?shareUri=in8VjftNvtBM6vSe&c=Skin_0%7E1fad66-0.1%7Eb17606&w=800&h=800&fm=png">
+    </div>   -->
+
+  
+</ion-content>

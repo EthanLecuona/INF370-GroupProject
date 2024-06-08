@@ -1,0 +1,374 @@
+<ion-app>
+  <ion-menu *ngIf="this.userService.userRole == 'employee'" side="start" menuId="main" contentId="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Employee Dashboard</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="profile" size="12">
+            <ion-avatar>
+              <ion-img [src]="this.userService.ProfilePicture"></ion-img>
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="1"></ion-col>
+          <ion-col class="name" size="10">
+            <hr>
+            <ion-label>{{this.userService.Firstname + " " + this.userService.Lastname}}</ion-label>
+            <hr>
+          </ion-col>
+          <ion-col size="1"></ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col class="list" size="12">
+            <div class="item" *ngFor="let pages of employeePages" [routerLink]="pages.url">
+              <ion-menu-toggle autoHide="true">
+                <a class="content" [routerLink]="pages.url" routerDirection="forward" button="true">
+                  <span class="icon"><ion-icon [name]="pages.icon" slot="start"></ion-icon></span>
+                  <span class="title">{{pages.title}}</span>
+                </a>
+              </ion-menu-toggle>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-row align-items-center>
+          <ion-col>
+            <ion-item>
+              <ion-label>Employee</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-button class="logout" color="danger" (click)="presentAlert()">
+              Logout
+              <ion-icon name="log-out-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+
+  <ion-menu *ngIf="this.userService.userRole == 'manager'" side="start" menuId="main" contentId="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Manager Dashboard</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="profile" size="12">
+            <ion-avatar>
+              <ion-img [src]="this.userService.ProfilePicture"></ion-img>
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="1"></ion-col>
+          <ion-col class="name" size="10">
+            <hr>
+            <ion-label>{{this.userService.Firstname + " " + this.userService.Lastname}}</ion-label>
+            <hr>
+          </ion-col>
+          <ion-col size="1"></ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="list" size="12">
+            <div class="item" *ngFor="let pages of managerPages" [routerLink]="pages.url">
+              <ion-menu-toggle autoHide="true">
+                <a class="content" [routerLink]="pages.url" routerDirection="forward" button="true">
+                  <span class="icon"><ion-icon [name]="pages.icon" slot="start"></ion-icon></span>
+                  <span class="title">{{pages.title}}</span>
+                </a>
+              </ion-menu-toggle>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+
+    <ion-footer>
+      <ion-toolbar>
+        <ion-row align-items-center>
+          <ion-col>
+            <ion-item>
+              <ion-label>Manager</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-button class="logout" color="danger" (click)="presentAlert()">
+              Logout
+              <ion-icon name="log-out-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+
+  <ion-menu *ngIf="this.userService.userRole == 'driver'" side="start" menuId="main" contentId="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Driver Dashboard</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="profile" size="12">
+            <ion-avatar>
+              <ion-img [src]="this.userService.ProfilePicture"></ion-img>
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="1"></ion-col>
+          <ion-col class="name" size="10">
+            <hr>
+            <ion-label>{{this.userService.Firstname + " " + this.userService.Lastname}}</ion-label>
+            <hr>
+          </ion-col>
+          <ion-col size="1"></ion-col>
+        </ion-row>
+          <ion-row>
+            <ion-col class="list" size="12">
+              <div class="item" *ngFor="let pages of driverPages" [routerLink]="pages.url">
+                <ion-menu-toggle autoHide="true">
+                  <a class="content" [routerLink]="pages.url" routerDirection="forward" button="true">
+                    <span class="icon"><ion-icon [name]="pages.icon" slot="start"></ion-icon></span>
+                    <span class="title">{{pages.title}}</span>
+                  </a>
+                </ion-menu-toggle>
+              </div>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-row align-items-center>
+          <ion-col>
+            <ion-item>
+              <ion-label>Driver</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-button class="logout" color="danger" (click)="presentAlert()">
+              Logout
+              <ion-icon name="log-out-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+
+  <ion-menu *ngIf="this.userService.userRole == 'admin'" side="start" menuId="main" contentId="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Admin Dashboard</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="profile" size="12">
+            <ion-avatar>
+              <ion-img [src]="this.userService.ProfilePicture"></ion-img>
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="1"></ion-col>
+          <ion-col class="name" size="10">
+            <hr>
+            <ion-label>{{this.userService.Firstname + " " + this.userService.Lastname}}</ion-label>
+            <hr>
+          </ion-col>
+          <ion-col size="1"></ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col class="list" size="12">
+            <div class="item" *ngFor="let pages of adminPages" [routerLink]="pages.url">
+              <ion-menu-toggle autoHide="true">
+                <a class="content" [routerLink]="pages.url" routerDirection="forward" button="true">
+                  <span class="icon"><ion-icon [name]="pages.icon" slot="start"></ion-icon></span>
+                  <span class="title">{{pages.title}}</span>
+                </a>
+              </ion-menu-toggle>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-row align-items-center>
+          <ion-col>
+            <ion-item>
+              <ion-label>Admin</ion-label>
+            </ion-item>
+
+          </ion-col>
+          <ion-col>
+            <ion-button class="logout" color="danger" (click)="presentAlert()">
+              Logout
+              <ion-icon name="log-out-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+
+  <!-- Super Admin -->
+  <ion-menu *ngIf="this.userService.userRole == 'superadmin'" side="start" menuId="main" contentId="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Admin Dashboard</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="profile" size="12">
+            <ion-avatar>
+              <ion-img [src]="this.userService.ProfilePicture"></ion-img>
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="name" size="12">
+            <ion-label>{{this.userService.Firstname + " " + this.userService.Lastname}}</ion-label>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col class="list" size="12">
+            <div class="item" *ngFor="let pages of superAdminPages" [routerLink]="pages.url">
+              <ion-menu-toggle autoHide="true">
+                <a class="content" [routerLink]="pages.url" routerDirection="forward" button="true">
+                  <span class="icon"><ion-icon [name]="pages.icon" slot="start"></ion-icon></span>
+                  <span class="title">{{pages.title}}</span>
+                </a>
+              </ion-menu-toggle>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-row align-items-center>
+          <ion-col>
+            <ion-item>
+              <ion-label>Super Admin</ion-label>
+            </ion-item>
+
+          </ion-col>
+          <ion-col>
+            <ion-button class="logout" color="danger" (click)="presentAlert()">
+              Logout
+              <ion-icon name="log-out-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+
+  <ion-menu *ngIf="this.userService.userRole == 'client'" side="start" menuId="main" contentId="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Client Dashboard</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="profile" size="12">
+            <ion-avatar>
+              <ion-img [src]="this.userService.ProfilePicture"></ion-img>
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="name" size="12">
+            <ion-label>{{this.userService.Firstname + " " + this.userService.Lastname}}</ion-label>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col class="list" size="12">
+            <div class="item" *ngFor="let pages of clientPages" [routerLink]="pages.url">
+              <ion-menu-toggle autoHide="true">
+                <a class="content" [routerLink]="pages.url" routerDirection="forward" button="true">
+                  <span class="icon"><ion-icon [name]="pages.icon" slot="start"></ion-icon></span>
+                  <span class="title">{{pages.title}}</span>
+                </a>
+              </ion-menu-toggle>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-row align-items-center>
+          <ion-col>
+            <ion-item>
+              <ion-label>Client</ion-label>
+            </ion-item>
+
+          </ion-col>
+          <ion-col>
+            <ion-button class="logout" color="danger" (click)="presentAlert()">
+              Logout
+              <ion-icon name="log-out-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+
+  <ion-menu *ngIf="this.userService.userRole == ''" side="start" menuId="main" contentId="content" active>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Home Dashboard</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content >
+      <div class="list">
+      <div *ngFor="let pages of loggedOutPages" class="item">
+        <ion-menu-toggle autoHide="true">
+          <a class="content" [routerLink]="pages.url" routerDirection="forward" button="true">
+            <span class="icon"><ion-icon [name]="pages.icon" slot="start"></ion-icon></span>
+            <span class="title">{{pages.title}}</span>
+          </a>
+        </ion-menu-toggle>
+      </div>
+    </div>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet Id="content"></ion-router-outlet>
+</ion-app>

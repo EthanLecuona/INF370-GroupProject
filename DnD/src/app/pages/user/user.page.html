@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','user']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button href="/user/add-user-role">Add User Role</ion-button>
+  <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+  <ion-grid id="companyGrid" class="ion-text-center">
+    <ion-row class="ion-margin">
+      <ion-col>
+        <ion-title>
+          <ion-text color="default" >Vehicle</ion-text>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+      <ion-row class="header-row">
+      <ion-col>
+        <ion-text>User Name</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>Edit Vehicle</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let u of users | filter: searchTerm">
+      <ion-col>
+        <ion-text>{{u.firstname}} {{u.lastname}}</ion-text>
+      </ion-col>
+      <ion-col>
+           <ion-button id="editButton" color=" rgb(141, 181, 216)" [routerLink]="['/user/edit-user-profile', u.id]">Edit User</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

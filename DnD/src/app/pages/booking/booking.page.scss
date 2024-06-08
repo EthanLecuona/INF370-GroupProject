@@ -1,0 +1,106 @@
+#qrcode {
+  visibility: hidden;
+}
+
+.alert-radio-label.sc-ion-alert-md,
+.alert-radio-label.sc-ion-alert-ios {
+    white-space: normal;
+}
+
+.alert-tappable.alert-radio {
+    height: auto;
+    contain: content;
+}
+.header{
+    width: 100%;
+    display: inline-flex;
+    .settings{
+        float: right;
+        margin-right: 5vh;
+    }
+}
+.container{
+    position: relative;
+    color: black;
+    align-items: center;
+    text-align: center;
+    // margin: 5vh;
+    background-color: white;
+    border-radius: 10vh;
+    padding: 2vh;
+    svg{
+        width: 400px;
+        height: 400px;
+    }
+    ion-button{
+        display: inline-block;
+    }
+    form{
+       
+ 
+        .parcelbox-row{
+            left: 0;
+            .parcelbox{
+                margin-top: 2vh;
+                margin-bottom: 2vh;
+                align-items: left;
+                background-color: #001844;
+                color: white;
+                box-shadow: 2px 2px 5px black;
+                border-radius: 3vh;
+                display: flex;
+                align-items: center;
+            } 
+        }
+
+        .calendar{
+            day{
+                background-color: white;
+                color: white;
+            }
+        }
+    }
+}
+.heading-parcel{
+    font-size: 0.5rem;
+}
+.remove-parcel{
+    --background: #cd1543; 
+    padding-left: 10vh;
+}
+ion-datetime{
+    color: white;
+    --background: #1a1a1a;
+    display: inline-block;
+}
+
+ion-content{
+    text-align: center;
+    align-items: center;
+    .trans-container{
+        margin-top: 2vh;
+        box-shadow: 1px 1px 15px 2px black;
+        border-radius: 50px;
+        align-items: center;
+        form{
+            padding: 2vh;
+            
+            .heading{
+                font-size: 1.5em;
+                text-align: center;
+            }
+            .footer{
+                display: block;
+                ion-button{
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    svg{
+        display: none;
+    }
+}

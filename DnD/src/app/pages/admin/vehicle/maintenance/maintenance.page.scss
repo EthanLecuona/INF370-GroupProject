@@ -1,0 +1,95 @@
+ion-content{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+#addMaintenanceForm{
+  background-color: white;
+  margin-top: 3%;
+  border-radius: 10px;
+  color: black;
+  padding: 1%;
+  .table-main{
+      width: 100%;
+      align-items: center;
+      background-color: #001844;
+      font-weight: bold;
+      width: 100%;
+      color: white;
+      
+    }
+    .table-header{
+      background-color: #869ec3;
+    }
+}
+.header{
+  width: 100%;
+  display: inline-flex;
+  .settings{
+      float: right;
+      margin-right: 5vh;
+  }
+}
+.seg-btn{
+  width: 33%;
+  .seg{
+    font-size: 1rem;
+    
+  }
+}
+
+
+.table {
+  --ion-grid-column-padding: 10px;
+  border-collapse: collapse;
+  border-style: hidden;
+  .table-col{
+    border: 1px solid black;
+    border-bottom: 0.7;
+    border-right: 0;
+  }
+  .table-col:last-child{
+    border-right: 1px solid black;
+  }
+  
+  .table-row:last-child{
+    border-bottom: 1px solid black;
+  }
+
+}
+#Button{
+  width: 22%;
+  height: 85%;
+  background-color: rgb(141, 181, 216) ;
+  border-radius: 5%;
+}
+
+
+.item, .list, .item-content, .item-complex {
+  --ibackground-color: transparent !important;
+}
+
+  
+ion-label{
+  color: black;
+}
+ion-input{
+  color: black;
+}
+
+#label{
+  padding: 1%;
+  font-weight: bold;
+}
+
+#errortext{
+  text-align: center;
+  color: red;
+}
+
+#searchBar{
+  
+  
+  border-radius: 3px;
+
+}

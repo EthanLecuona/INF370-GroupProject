@@ -1,0 +1,450 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','bookinginfo']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Booking Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="tabs">
+   <ion-row>
+    <ion-col size="12">   
+      <h1>Booking : #{{bookingId}}</h1>
+      <p>Status: {{status}}</p>
+    </ion-col>
+   </ion-row>
+    <ion-segment class="tabs" value="bookinginfo" [(ngModel)]="type" (ionChange)="tabChange($event)">
+      <ion-button (click)="back()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+      <ion-segment-button value="info">
+        <ion-label id="info-tab">Booking Info</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="comments">
+        <ion-label id="comment-tab">Comments</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="type">
+    <div *ngIf="activeTab == 'info'">
+      <div class="info-details" *ngIf="senderLoggedIn == true">
+      <ion-grid>
+        <ion-row class="personal-details">
+            <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="6">
+              <h2>Sender</h2>
+              <h3>Sender Name:</h3>
+              <p>{{senderName}}</p>
+              <h3>Sender Contact Number:</h3>
+              <p>{{senderPhone}}</p>
+            </ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSm="0" sizeXs="0">
+              <svg width="100%" height="100%" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+                  <g id="Layer3" transform="matrix(0.439701,0,0,0.439701,-39.8732,-115.355)">
+                      <g transform="matrix(1.58374,0,0,1.58374,-75.0325,-371.517)">
+                          <circle cx="212.337" cy="507.936" r="97.905" style="fill:rgb(224,224,224);stroke:white;stroke-width:1.46px;"/>
+                      </g>
+                      <g id="screen">
+                          <g transform="matrix(1.52252,0,0,1.57848,-111.77,-371.737)">
+                              <path d="M331.226,466.71C331.226,461.797 327.097,457.814 322.003,457.814C292.174,457.814 198.499,457.814 168.28,457.814C165.76,457.814 163.344,458.779 161.562,460.497C159.781,462.216 158.78,464.546 158.78,466.976C158.78,485.816 158.78,528.908 158.78,550.128C158.78,553.381 160.12,556.501 162.505,558.801C164.89,561.102 168.124,562.394 171.497,562.394C203.053,562.394 284.751,562.394 317.424,562.394C321.085,562.394 324.595,560.991 327.184,558.495C329.772,555.998 331.226,552.612 331.226,549.081L331.226,466.71Z" style="fill:rgb(1,25,69);"/>
+                          </g>
+                          <g transform="matrix(1.41312,0,0,1.41312,-84.9657,-287.383)">
+                              <path d="M331.226,466.256C331.226,461.593 327.446,457.814 322.784,457.814C293.203,457.814 194.516,457.814 166.347,457.814C164.34,457.814 162.415,458.611 160.996,460.03C159.577,461.449 158.78,463.374 158.78,465.38C158.78,484.174 158.78,532.924 158.78,553.267C158.78,555.688 159.742,558.009 161.453,559.721C163.165,561.432 165.486,562.394 167.907,562.394C197.467,562.394 290.448,562.394 321.224,562.394C326.748,562.394 331.226,557.916 331.226,552.392C331.226,531.878 331.226,485.369 331.226,466.256Z" style="fill:rgb(134,158,195);"/>
+                          </g>
+                      </g>
+                      <g transform="matrix(0.777335,0,0,0.777335,95.3476,267.188)">
+                          <g id="Layer1" transform="matrix(0.0240923,-0.0195954,0.0195954,0.0240923,86.0265,158.388)">
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M1077.33,2273.78C1086.34,1576.44 1697.94,1036.62 2482.22,998.342C1897.84,1219.4 1638.86,1714.89 1744.88,2241.84C1510.14,2030.01 1289.28,2070.91 1077.33,2273.78Z" style="fill:rgb(1,25,69);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2503,1031C1873.7,1285.79 1691.4,1760.29 1791,2245C1932.33,2084.75 2098.3,2049.75 2308,2237C2203.57,1825.1 2228.88,1397.11 2503,1031Z" style="fill:rgb(207,209,211);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2308,2237L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2555,1032C2249.76,1402.55 2247.77,1916.29 2355,2255C2531.27,2062.95 2731.85,2054.1 2914,2249C2928.92,1717.39 2813.41,1260.66 2555,1032Z" style="fill:rgb(1,25,69);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2914,2249L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2355,2255L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2631,1044C2865.55,1308.16 2975.35,1708.07 2962,2242C3121.82,2069.44 3295.72,2043.4 3492,2250C3561.91,1756.22 3326.69,1340.91 2631,1044Z" style="fill:rgb(207,209,211);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M3492,2250L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2962,2242L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2612,998C3277.12,1254.99 3595.72,1662.49 3539,2233C3677.73,2066.63 3833.81,2073.8 4009,2272C4006.15,1642.36 3480.44,1059.69 2612,998Z" style="fill:rgb(1,25,69);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M4009,2272L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M3539,2233L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M1077.33,2273.78L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M1746,2242L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M1791,2245L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                          </g>
+                          <g id="Layer31" serif:id="Layer3" transform="matrix(0.257214,0,0,0.417923,100.687,122.124)">
+                              <path d="M211.753,361.601C214.775,362.841 217.953,363.729 221.409,363.99L271.682,364.09L295.972,364.886L271.782,365.384L221.509,365.284C217.427,365.185 214.6,363.336 211.753,361.601Z" style="stroke:black;stroke-width:3.51px;"/>
+                              <path d="M212.39,367.68L237.811,367.043L295.98,367.616L237.747,368.444L212.39,367.68Z" style="stroke:black;stroke-width:3.51px;"/>
+                              <g transform="matrix(1,0,0,-1,-1.40166,735.522)">
+                                  <path d="M211.753,361.601C214.775,362.841 217.953,363.729 221.409,363.99L271.682,364.09L295.972,364.886L271.782,365.384L221.509,365.284C217.114,365.081 214.6,363.336 211.753,361.601Z" style="stroke:black;stroke-width:3.51px;"/>
+                              </g>
+                              <g transform="matrix(2.61305,0,0,1.88106,-400.635,-328.271)">
+                                  <path d="M247.196,358.981C241.773,367.032 242.427,374.518 246.979,381.641" style="fill:none;stroke:black;stroke-width:3.33px;"/>
+                              </g>
+                              <g transform="matrix(2.61305,0,0,1.88106,-400.635,-328.271)">
+                                  <path d="M248.153,366.288C246.505,369.79 246.307,373.384 248.37,377.118" style="fill:none;stroke:black;stroke-width:3.33px;"/>
+                              </g>
+                              <g transform="matrix(2.61305,0,0,2.72124,-340.7,-627.8)">
+                                  <path d="M189.57,348.704C193.668,350.153 196.833,352.034 196.833,356.859C196.737,360.732 194.038,363.408 190.271,364.313C196.517,359.193 196.746,353.993 189.57,348.704Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M162.365,347.684C163.076,344.202 165.371,342.161 169.82,342.078C176.04,343.006 177.388,346.626 177.146,351.125C180.254,349.798 183.214,349.647 185.811,352.399C188.849,357.114 186.98,360.193 182.881,362.529C184.695,360.403 186.423,358.25 185.493,355.266C183.182,350.774 180.137,350.796 176.637,353.609C174.661,356.933 172.305,357.467 169.82,357.05C172.201,356.449 174.214,355.295 175.235,352.654C175.918,350.145 175.678,347.92 174.152,346.091C170.495,342.088 166.532,343.193 162.365,347.684Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M158.351,364.632C151.366,368.293 151.523,373.902 153.892,380.114C159.24,387.013 164.746,385.23 170.266,382.726C164.308,384.479 159.041,384.054 155.293,378.839C152.646,373.933 153.694,369.198 158.351,364.632Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M170.775,380.432C172.877,387.186 176.659,389.076 181.989,386.485C186.105,383.826 186.791,379.948 183.263,374.571C187.792,378.051 187.994,384.895 182.753,387.95C177.663,390.226 171.554,388.882 170.775,380.432Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M192.692,364.504C194.576,366.8 195.395,369.45 194.731,372.596C193.504,375.859 191.203,377.109 188.615,377.82C191.319,378.173 193.96,377.687 196.324,373.615C197.227,369.169 196.377,365.892 192.692,364.504Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M201.357,357.432C203.502,355.775 205.753,355.393 208.238,357.814C209.895,359.98 209.067,362.381 207.155,364.886C208.002,362.749 208.284,360.801 207.091,359.344C206.037,357.206 203.776,357.18 201.357,357.432Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M202.058,364.95C200.568,365.48 200.001,366.65 200.72,368.709C202.122,370.068 203.523,370.132 204.925,368.773C203.627,369.044 202.378,369.076 201.93,367.817C201.251,367.09 201.378,366.017 202.058,364.95Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M206.008,370.175C207.418,373.123 207.423,375.365 205.307,376.673C203.109,378.032 201.155,377.12 199.191,374.443C200.25,377.893 201.906,380.306 206.199,378.139C208.375,377.04 209.314,373.292 206.008,370.175Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M164.786,351.38C159.697,349.125 155.562,349.662 152.681,353.864C150.425,357.475 151.433,361.085 154.274,364.695C150.763,361.822 148.616,358.748 151.279,352.972C154.108,348.287 159.219,347.294 164.786,351.38Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M176.382,341.377C178.548,340.026 181.303,340.308 183.263,342.269C185.223,344.229 185.16,347.265 183.836,348.895C184,346.968 183.42,344.656 182.052,343.288C180.726,341.813 178.488,341.463 176.382,341.377Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M163.609,366.777C159.753,368.583 158.941,372.244 162.096,375.139C164.405,376.934 166.822,376.556 169.344,374.104C170.312,375.923 172.052,377.053 174.083,376.535C176.61,375.736 177.304,374.437 177.387,371.954C176.332,373.984 175.018,375.152 173.326,375.06C171.422,374.921 170.186,373.313 169.344,370.839C168.394,374.345 166.268,376.055 163.291,373.785C161.308,372.273 161.103,370.204 163.609,366.777Z" style="stroke:black;stroke-width:1.31px;"/>
+                              </g>
+                          </g>
+                          <g id="Layer11" serif:id="Layer1">
+                              <path d="M201.247,208.193C196.104,208.193 191.172,210.236 187.535,213.873C183.898,217.51 181.855,222.442 181.855,227.585C181.855,246.283 181.855,271.764 181.855,271.764L273.281,272.448L273.281,227.585C273.281,222.442 271.238,217.51 267.601,213.873C263.964,210.236 259.032,208.193 253.889,208.193C238.384,208.193 216.752,208.193 201.247,208.193Z" style="fill:rgb(0,24,68);stroke:black;stroke-width:2.93px;"/>
+                              <g transform="matrix(1,0,0,1,0,-0.629966)">
+                                  <path d="M181.855,272.448L232.438,272.448L232.438,270.397L255.337,270.397L255.337,284.41L232.096,284.41L232.096,282.359L181.855,282.359L181.855,272.448Z" style="fill:rgb(207,209,211);stroke:black;stroke-width:2.93px;"/>
+                              </g>
+                              <path d="M273.281,230.751L298.914,230.751L312.756,255.53L312.927,282.53L255.337,282.53L255.337,272.448L273.281,272.448L273.281,230.751Z" style="fill:rgb(205,21,67);stroke:black;stroke-width:2.93px;"/>
+                              <path d="M280.629,235.706L295.155,235.706L303.528,251.599L303.528,259.118L280.629,259.118L280.629,235.706Z" style="fill:rgb(230,230,230);stroke:black;stroke-width:2.93px;"/>
+                              <g transform="matrix(2.37744,0,0,2.37744,-289.087,-400.398)">
+                                  <circle cx="206.395" cy="287.253" r="4.723"/>
+                              </g>
+                              <g transform="matrix(1.17135,0,0,1.17135,-40.1554,-53.9432)">
+                                  <circle cx="206.395" cy="287.253" r="4.723" style="fill:rgb(235,235,235);"/>
+                              </g>
+                              <g transform="matrix(2.37744,0,0,2.37744,-196.254,-399.435)">
+                                  <circle cx="206.395" cy="287.253" r="4.723"/>
+                              </g>
+                              <g transform="matrix(1.17135,0,0,1.17135,52.6771,-52.9808)">
+                                  <circle cx="206.395" cy="287.253" r="4.723" style="fill:white;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,-16.5365,13.6715)">
+                                  <text x="203.5px" y="237.99px" style="font-family:'Magneto-Bold', 'Magneto', fantasy;font-weight:700;font-stretch:semi-expanded;font-size:33.333px;fill:white;">DnD</text>
+                              </g>
+                              <g id="Layer7" transform="matrix(0.497293,0,0,0.497293,101.389,82.0381)">
+                                  <path d="M375.427,309.513L360.947,332.236L360.947,341.874L384.491,309.513L375.427,309.513Z" style="fill:white;"/>
+                                  <path d="M387.664,309.491L360.947,345.913L360.947,348.329L390.382,311.408L389.354,309.491L387.664,309.491Z" style="fill:white;"/>
+                              </g>
+                          </g>
+                          <g transform="matrix(0.468239,0,0,1.36648,96.8172,-97.9807)">
+                              <rect x="171.204" y="272.134" width="9.684" height="3.228" style="fill:rgb(207,209,211);stroke:black;stroke-width:1.19px;"/>
+                          </g>
+                      </g>
+                  </g>
+              </svg>
+            </ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="6">
+              <h2>Receiver</h2>
+              <h3>Receiver Name:</h3>
+              <p>{{receiverName}}</p>
+              <h3>Receiver Contact Number:</h3>
+              <p>{{receiverPhone}}</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <div class="company">
+            <h3>Client Company Name</h3>
+            <p>{{companyName}}</p>
+            <h3>Booking Date:</h3>
+            <p>{{bookingDate | slice:0:10}}</p>
+            <br />
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <h2>Start Location:</h2>
+            <p>{{startLocation}}</p>
+          </ion-col>
+          <ion-col size="4">
+            <h2>Driver:</h2>
+            <h3>Driver Name:</h3>
+            <p>{{driverName}}</p>
+            <h3>Driver Contact Number:</h3>
+            <p>{{driverPhone}}</p>
+          </ion-col>
+          <ion-col size="4">
+            <h2>End Location:</h2>
+            <p>{{endLocation}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4"></ion-col>
+            <ion-col size="4">
+              <div *ngIf="status == 'Placed'">
+                <ion-button class="btn" expand="block" color="success" (click)="downloadQR()">Download QR Code</ion-button>
+                <ion-button class="btn" expand="block" (click)="cancelBookingFineCheck()">Cancel Booking</ion-button>
+              </div>
+            </ion-col>
+          <ion-col size="4"></ion-col>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </ion-row>
+        <ngx-qrcode id="parent"
+        [elementType]="elementType"
+        [errorCorrectionLevel]="correctionLevel"
+        [value]="value">
+        </ngx-qrcode>
+        <ion-modal id="cancel-modal" #modal trigger="open-modal">
+            <ng-template>
+              <div class="wrapper">
+                <h1>Cancellation Reason</h1>
+                <ion-list lines="none">
+                  <ion-item button="true" detail="false" (click)="cancelBooking('Not available on day of delivery.')">
+                    <ion-label>Not available on day of delivery.</ion-label>
+                  </ion-item>
+                  <ion-item button="true" detail="false" (click)="cancelBooking('Incorrect booking details.')">
+                    <ion-label>Incorrect booking details.</ion-label>
+                  </ion-item>
+                  <ion-item button="true" detail="false" (click)="cancelBooking('Items not ready for delivery.')">
+                    <ion-label>Items not ready for delivery.</ion-label>
+                  </ion-item>
+                  <ion-item button="true" detail="false" (click)="cancelBooking('Other Reason.')">
+                    <ion-label>Other Reason.</ion-label>
+                  </ion-item>
+                </ion-list>
+              </div>
+            </ng-template>
+        </ion-modal>
+        </ion-grid>
+      </div>
+
+      <div class="info-details" *ngIf="senderLoggedIn == false">
+        <ion-grid>
+          <ion-row class="personal-details">
+              <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="6">
+                <h2>Sender:</h2>
+                <h3>Sender Name:</h3>
+                <p>{{receiverName}}</p>
+                <h3>Sender Contact Number:</h3>
+                <p>{{receiverPhone}}</p>
+              </ion-col>
+              <ion-col sizeLg="4" sizeMd="4" sizeSm="0" sizeXs="0" no-padding>
+                <svg width="100%" height="100%" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+                  <g id="Layer3" transform="matrix(0.439701,0,0,0.439701,-39.8732,-115.355)">
+                      <g transform="matrix(1.58374,0,0,1.58374,-75.0325,-371.517)">
+                          <circle cx="212.337" cy="507.936" r="97.905" style="fill:rgb(224,224,224);stroke:white;stroke-width:1.46px;"/>
+                      </g>
+                      <g id="screen">
+                          <g transform="matrix(1.52252,0,0,1.57848,-111.77,-371.737)">
+                              <path d="M331.226,466.71C331.226,461.797 327.097,457.814 322.003,457.814C292.174,457.814 198.499,457.814 168.28,457.814C165.76,457.814 163.344,458.779 161.562,460.497C159.781,462.216 158.78,464.546 158.78,466.976C158.78,485.816 158.78,528.908 158.78,550.128C158.78,553.381 160.12,556.501 162.505,558.801C164.89,561.102 168.124,562.394 171.497,562.394C203.053,562.394 284.751,562.394 317.424,562.394C321.085,562.394 324.595,560.991 327.184,558.495C329.772,555.998 331.226,552.612 331.226,549.081L331.226,466.71Z" style="fill:rgb(1,25,69);"/>
+                          </g>
+                          <g transform="matrix(1.41312,0,0,1.41312,-84.9657,-287.383)">
+                              <path d="M331.226,466.256C331.226,461.593 327.446,457.814 322.784,457.814C293.203,457.814 194.516,457.814 166.347,457.814C164.34,457.814 162.415,458.611 160.996,460.03C159.577,461.449 158.78,463.374 158.78,465.38C158.78,484.174 158.78,532.924 158.78,553.267C158.78,555.688 159.742,558.009 161.453,559.721C163.165,561.432 165.486,562.394 167.907,562.394C197.467,562.394 290.448,562.394 321.224,562.394C326.748,562.394 331.226,557.916 331.226,552.392C331.226,531.878 331.226,485.369 331.226,466.256Z" style="fill:rgb(134,158,195);"/>
+                          </g>
+                      </g>
+                      <g transform="matrix(0.777335,0,0,0.777335,95.3476,267.188)">
+                          <g id="Layer1" transform="matrix(0.0240923,-0.0195954,0.0195954,0.0240923,86.0265,158.388)">
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M1077.33,2273.78C1086.34,1576.44 1697.94,1036.62 2482.22,998.342C1897.84,1219.4 1638.86,1714.89 1744.88,2241.84C1510.14,2030.01 1289.28,2070.91 1077.33,2273.78Z" style="fill:rgb(1,25,69);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2503,1031C1873.7,1285.79 1691.4,1760.29 1791,2245C1932.33,2084.75 2098.3,2049.75 2308,2237C2203.57,1825.1 2228.88,1397.11 2503,1031Z" style="fill:rgb(207,209,211);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2308,2237L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2555,1032C2249.76,1402.55 2247.77,1916.29 2355,2255C2531.27,2062.95 2731.85,2054.1 2914,2249C2928.92,1717.39 2813.41,1260.66 2555,1032Z" style="fill:rgb(1,25,69);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2914,2249L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2355,2255L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2631,1044C2865.55,1308.16 2975.35,1708.07 2962,2242C3121.82,2069.44 3295.72,2043.4 3492,2250C3561.91,1756.22 3326.69,1340.91 2631,1044Z" style="fill:rgb(207,209,211);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M3492,2250L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2962,2242L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M2612,998C3277.12,1254.99 3595.72,1662.49 3539,2233C3677.73,2066.63 3833.81,2073.8 4009,2272C4006.15,1642.36 3480.44,1059.69 2612,998Z" style="fill:rgb(1,25,69);stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M4009,2272L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M3539,2233L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M1077.33,2273.78L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M1746,2242L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,0,184.5)">
+                                  <path d="M1791,2245L2549.5,3966.5" style="fill:none;stroke:black;stroke-width:45.7px;"/>
+                              </g>
+                          </g>
+                          <g id="Layer31" serif:id="Layer3" transform="matrix(0.257214,0,0,0.417923,100.687,122.124)">
+                              <path d="M211.753,361.601C214.775,362.841 217.953,363.729 221.409,363.99L271.682,364.09L295.972,364.886L271.782,365.384L221.509,365.284C217.427,365.185 214.6,363.336 211.753,361.601Z" style="stroke:black;stroke-width:3.51px;"/>
+                              <path d="M212.39,367.68L237.811,367.043L295.98,367.616L237.747,368.444L212.39,367.68Z" style="stroke:black;stroke-width:3.51px;"/>
+                              <g transform="matrix(1,0,0,-1,-1.40166,735.522)">
+                                  <path d="M211.753,361.601C214.775,362.841 217.953,363.729 221.409,363.99L271.682,364.09L295.972,364.886L271.782,365.384L221.509,365.284C217.114,365.081 214.6,363.336 211.753,361.601Z" style="stroke:black;stroke-width:3.51px;"/>
+                              </g>
+                              <g transform="matrix(2.61305,0,0,1.88106,-400.635,-328.271)">
+                                  <path d="M247.196,358.981C241.773,367.032 242.427,374.518 246.979,381.641" style="fill:none;stroke:black;stroke-width:3.33px;"/>
+                              </g>
+                              <g transform="matrix(2.61305,0,0,1.88106,-400.635,-328.271)">
+                                  <path d="M248.153,366.288C246.505,369.79 246.307,373.384 248.37,377.118" style="fill:none;stroke:black;stroke-width:3.33px;"/>
+                              </g>
+                              <g transform="matrix(2.61305,0,0,2.72124,-340.7,-627.8)">
+                                  <path d="M189.57,348.704C193.668,350.153 196.833,352.034 196.833,356.859C196.737,360.732 194.038,363.408 190.271,364.313C196.517,359.193 196.746,353.993 189.57,348.704Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M162.365,347.684C163.076,344.202 165.371,342.161 169.82,342.078C176.04,343.006 177.388,346.626 177.146,351.125C180.254,349.798 183.214,349.647 185.811,352.399C188.849,357.114 186.98,360.193 182.881,362.529C184.695,360.403 186.423,358.25 185.493,355.266C183.182,350.774 180.137,350.796 176.637,353.609C174.661,356.933 172.305,357.467 169.82,357.05C172.201,356.449 174.214,355.295 175.235,352.654C175.918,350.145 175.678,347.92 174.152,346.091C170.495,342.088 166.532,343.193 162.365,347.684Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M158.351,364.632C151.366,368.293 151.523,373.902 153.892,380.114C159.24,387.013 164.746,385.23 170.266,382.726C164.308,384.479 159.041,384.054 155.293,378.839C152.646,373.933 153.694,369.198 158.351,364.632Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M170.775,380.432C172.877,387.186 176.659,389.076 181.989,386.485C186.105,383.826 186.791,379.948 183.263,374.571C187.792,378.051 187.994,384.895 182.753,387.95C177.663,390.226 171.554,388.882 170.775,380.432Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M192.692,364.504C194.576,366.8 195.395,369.45 194.731,372.596C193.504,375.859 191.203,377.109 188.615,377.82C191.319,378.173 193.96,377.687 196.324,373.615C197.227,369.169 196.377,365.892 192.692,364.504Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M201.357,357.432C203.502,355.775 205.753,355.393 208.238,357.814C209.895,359.98 209.067,362.381 207.155,364.886C208.002,362.749 208.284,360.801 207.091,359.344C206.037,357.206 203.776,357.18 201.357,357.432Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M202.058,364.95C200.568,365.48 200.001,366.65 200.72,368.709C202.122,370.068 203.523,370.132 204.925,368.773C203.627,369.044 202.378,369.076 201.93,367.817C201.251,367.09 201.378,366.017 202.058,364.95Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M206.008,370.175C207.418,373.123 207.423,375.365 205.307,376.673C203.109,378.032 201.155,377.12 199.191,374.443C200.25,377.893 201.906,380.306 206.199,378.139C208.375,377.04 209.314,373.292 206.008,370.175Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M164.786,351.38C159.697,349.125 155.562,349.662 152.681,353.864C150.425,357.475 151.433,361.085 154.274,364.695C150.763,361.822 148.616,358.748 151.279,352.972C154.108,348.287 159.219,347.294 164.786,351.38Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M176.382,341.377C178.548,340.026 181.303,340.308 183.263,342.269C185.223,344.229 185.16,347.265 183.836,348.895C184,346.968 183.42,344.656 182.052,343.288C180.726,341.813 178.488,341.463 176.382,341.377Z" style="stroke:black;stroke-width:1.31px;"/>
+                                  <path d="M163.609,366.777C159.753,368.583 158.941,372.244 162.096,375.139C164.405,376.934 166.822,376.556 169.344,374.104C170.312,375.923 172.052,377.053 174.083,376.535C176.61,375.736 177.304,374.437 177.387,371.954C176.332,373.984 175.018,375.152 173.326,375.06C171.422,374.921 170.186,373.313 169.344,370.839C168.394,374.345 166.268,376.055 163.291,373.785C161.308,372.273 161.103,370.204 163.609,366.777Z" style="stroke:black;stroke-width:1.31px;"/>
+                              </g>
+                          </g>
+                          <g id="Layer11" serif:id="Layer1">
+                              <path d="M201.247,208.193C196.104,208.193 191.172,210.236 187.535,213.873C183.898,217.51 181.855,222.442 181.855,227.585C181.855,246.283 181.855,271.764 181.855,271.764L273.281,272.448L273.281,227.585C273.281,222.442 271.238,217.51 267.601,213.873C263.964,210.236 259.032,208.193 253.889,208.193C238.384,208.193 216.752,208.193 201.247,208.193Z" style="fill:rgb(0,24,68);stroke:black;stroke-width:2.93px;"/>
+                              <g transform="matrix(1,0,0,1,0,-0.629966)">
+                                  <path d="M181.855,272.448L232.438,272.448L232.438,270.397L255.337,270.397L255.337,284.41L232.096,284.41L232.096,282.359L181.855,282.359L181.855,272.448Z" style="fill:rgb(207,209,211);stroke:black;stroke-width:2.93px;"/>
+                              </g>
+                              <path d="M273.281,230.751L298.914,230.751L312.756,255.53L312.927,282.53L255.337,282.53L255.337,272.448L273.281,272.448L273.281,230.751Z" style="fill:rgb(205,21,67);stroke:black;stroke-width:2.93px;"/>
+                              <path d="M280.629,235.706L295.155,235.706L303.528,251.599L303.528,259.118L280.629,259.118L280.629,235.706Z" style="fill:rgb(230,230,230);stroke:black;stroke-width:2.93px;"/>
+                              <g transform="matrix(2.37744,0,0,2.37744,-289.087,-400.398)">
+                                  <circle cx="206.395" cy="287.253" r="4.723"/>
+                              </g>
+                              <g transform="matrix(1.17135,0,0,1.17135,-40.1554,-53.9432)">
+                                  <circle cx="206.395" cy="287.253" r="4.723" style="fill:rgb(235,235,235);"/>
+                              </g>
+                              <g transform="matrix(2.37744,0,0,2.37744,-196.254,-399.435)">
+                                  <circle cx="206.395" cy="287.253" r="4.723"/>
+                              </g>
+                              <g transform="matrix(1.17135,0,0,1.17135,52.6771,-52.9808)">
+                                  <circle cx="206.395" cy="287.253" r="4.723" style="fill:white;"/>
+                              </g>
+                              <g transform="matrix(1,0,0,1,-16.5365,13.6715)">
+                                  <text x="203.5px" y="237.99px" style="font-family:'Magneto-Bold', 'Magneto', fantasy;font-weight:700;font-stretch:semi-expanded;font-size:33.333px;fill:white;">DnD</text>
+                              </g>
+                              <g id="Layer7" transform="matrix(0.497293,0,0,0.497293,101.389,82.0381)">
+                                  <path d="M375.427,309.513L360.947,332.236L360.947,341.874L384.491,309.513L375.427,309.513Z" style="fill:white;"/>
+                                  <path d="M387.664,309.491L360.947,345.913L360.947,348.329L390.382,311.408L389.354,309.491L387.664,309.491Z" style="fill:white;"/>
+                              </g>
+                          </g>
+                          <g transform="matrix(0.468239,0,0,1.36648,96.8172,-97.9807)">
+                              <rect x="171.204" y="272.134" width="9.684" height="3.228" style="fill:rgb(207,209,211);stroke:black;stroke-width:1.19px;"/>
+                          </g>
+                      </g>
+                  </g>
+              </svg>
+              </ion-col>
+              <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="6">
+                <h2>Receiver:</h2>
+                <h3>Receiver Name:</h3>
+                <p>{{senderName}}</p>
+                <h3>Receiver Contact Number:</h3>
+                <p>{{senderPhone}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <h3>Client Company Name</h3>
+              <p>{{companyName}}</p>
+              <h3>Booking Date:</h3>
+              <p>{{bookingDate | slice:0:10}}</p>
+              <br />
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <h2>Driver:</h2>
+              <h3>Driver Name:</h3>
+              <p>{{driverName}}</p>
+              <h3>Driver Contact Number:</h3>
+              <p>{{driverPhone}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <h2 class="info-header">Start Location:</h2>
+              <p>{{startLocation}}</p>
+              <h2>End Location:</h2>
+              <p>{{endLocation}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-button color="primary" (click)="scanQr()">
+                Scan QR Code
+                </ion-button>
+            </ion-col>
+          </ion-row>
+          </ion-grid>
+      </div>
+    </div>
+
+  <div class="comments" *ngIf="activeTab == 'comments'">
+    <div class="conversation">
+        <ion-grid>
+          <ion-row *ngFor="let comment of arrComments let i = index">
+            <ion-col class="message other-message" size="9" *ngIf="comment.senderUserId !== this.userId">
+              <b class="header">Receiver</b><br><br>
+              <span>{{ comment.comment1 }}</span><br>
+              <div class="time"> {{comment.date | date: 'short'}}</div>
+            </ion-col>
+            <ion-col class="message my-message" offset="3" size="9" *ngIf="comment.senderUserId === this.userId">
+              <b>Sender</b><br><br>
+              <span class="message-text">{{ comment.comment1 }}</span><br>
+              <div class="time"> {{comment.date | date: 'short'}}
+                <ion-button (click)="presentAlert(comment)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      <footer class="message-input">
+        <textarea autosize maxRows="5" [(ngModel)]="comment" id="text"></textarea>
+        <div class="send-button">
+          <a (click)="addComment()"><ion-icon name="send-sharp"></ion-icon></a>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+</ion-content>

@@ -1,0 +1,243 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','bookingview']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Bookings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="type" (ionChange)="tabChange($event)">
+    <ion-segment-button value="progress">
+      <ion-label class="seg">In Progress</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="placed">
+      <ion-label class="seg">Placed</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="completed">
+      <ion-label class="seg">Completed</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="type">
+    <div *ngIf="activateTab == 'progress'">
+      <ion-row>
+        <ion-col size="12">
+          <div class="search">
+            <ion-searchbar placeholder="Search..." [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="inProgressBookings.length == 0">
+        <br>
+        <ion-row>
+          <br>
+          <ion-col sizeLg="12" sizeMd="12" sizeSd="12" sizeXs="12">
+            <i><label style="color: grey;">No bookings in progress...</label></i>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div class="scroll">
+        <ion-row class="bookings" *ngFor="let book of inProgressBookings | filter: searchTerm let i = index" [routerLink]="['bookinginfo', book.bookingId, book['cecId'], book['status']['bookingStatusId'], book['bookingDate']]">
+            <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+              <ion-row>
+                <ion-item lines="none">
+                    <h2>Booking : #{{book.bookingId}}</h2>
+                    <h2>for : {{book.clientName}}</h2>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item>
+                  <p class="status">Status : {{book['status']['status']}}</p>
+                </ion-item>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+              <ion-row>
+                <ion-item lines="none">
+                  <p class="ppp">Parcel Confidentiality: {{bookingDetails[0][i]['parcelCon']}}</p>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item lines="none">
+                  <p class="ppp">Parcel Priority: {{bookingDetails[0][i]['parcelPrio']}}</p>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item lines="none">
+                  <p class="ppp">Parcel Type: {{bookingDetails[0][i]['parcelType']}}</p>
+                </ion-item>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+              <ion-row>
+                <ion-item lines="none">
+                  <p>Delivery Date: {{book.bookingDate | slice:0:10}}</p>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item lines="none">
+                  <ion-button [routerLink]="['tracking', book.bookingId]">Track</ion-button>
+                </ion-item>
+              </ion-row>
+            </ion-col>
+        </ion-row>
+    </div>
+  </div>
+    
+    <div *ngIf="activateTab == 'placed'">
+      <ion-row>
+        <ion-col size="12">
+            <div class="search">
+            <ion-searchbar placeholder="Search..." [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="activeBookings.length == 0 && transportBookings.length == 0">
+        <br>
+        <ion-row>
+          <br>
+          <ion-col sizeLg="12" sizeMd="12" sizeSd="12" sizeXs="12">
+            <i><label style="color: grey;">No active bookings...Go make some!</label></i>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div class="scroll">
+        <ion-row class="bookings" *ngFor="let book of activeBookings | filter: searchTerm let i = index" [routerLink]="['bookinginfo', book.bookingId, book['cecId'], book['status']['bookingStatusId'], book['bookingDate']]">
+            <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+              <ion-row>
+                <ion-item lines="none">
+                  <ion-label class="ion-text-nowrap">
+                    <h2>Booking : #{{book.bookingId}} </h2>
+                    <h2>for : {{book.clientName}}</h2>
+                  </ion-label>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item lines="none">
+                  <ion-label class="ion-text-nowrap">
+                    <p class="status">Status : {{book['status']['status']}}</p>
+                  </ion-label>
+                </ion-item>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+              <ion-row>
+                <ion-item lines="none">
+                  <p class="ppp">Parcel Confidentiality: {{bookingDetails[0][i]['parcelCon']}}</p>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item lines="none">
+                  <p class="ppp">Parcel Priority: {{bookingDetails[0][i]['parcelPrio']}}</p>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item lines="none">
+                  <p class="ppp">Parcel Type: {{bookingDetails[0][i]['parcelType']}}</p>
+                </ion-item>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+              <ion-item lines="none">
+                <p>Delivery Date: {{book.bookingDate | slice:0:10}}</p>
+              </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row class="bookings" *ngFor="let trans of transportBookings | filter: searchTerm let i = index" [routerLink]="['transportinfo', trans.eventId, trans['bookingDate'], trans.bookingId]">
+          <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4"> 
+            <ion-row>
+              <ion-item lines="none">
+                <ion-label class="ion-text-nowrap">
+                  <h2>Transport Booking : #{{trans.bookingId}} </h2>
+                  <h2>to : {{trans.clientName}} - {{trans.eventName}}</h2>
+                </ion-label>
+              </ion-item>
+            </ion-row>
+            <ion-row>
+              <ion-item lines="none">
+                <ion-label class="ion-text-nowrap">
+                  <p class="status">Status : {{trans['status']['status']}}</p>
+                </ion-label>
+              </ion-item>
+            </ion-row>
+          </ion-col>
+          <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4"></ion-col>
+          <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+            <ion-item lines="none">
+              <p>Delivery Date: {{trans.bookingDate | slice:0:10}}</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <div *ngIf="activateTab == 'completed'">
+      <ion-row>
+        <ion-col size="12">
+          <div class="search">
+            <ion-searchbar placeholder="Search..." [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="completedBookings.length == 0">
+        <br>
+        <ion-row>
+          <br>
+          <ion-col sizeLg="12" sizeMd="12" sizeSd="12" sizeXs="12">
+            <i><label style="color: grey;">No bookings completed...</label></i>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div class="scroll">
+        <ion-row class="bookings" *ngFor="let book of completedBookings | filter: searchTerm let i = index" [routerLink]="['bookinginfo', book.bookingId, book['cecId'], book['status']['bookingStatusId'], book['bookingDate']]">
+            <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+              <ion-row>
+                <ion-item>
+                  <ion-label class="ion-text-nowrap">
+                    <h2>Booking : #{{book.bookingId}}</h2>
+                    <h2>For: {{book.clientName}}</h2>
+                  </ion-label>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item lines="none">
+                  <ion-label class="ion-text-nowrap">
+                    <p class="status">Status : {{book['status']['status']}}</p>
+                  </ion-label>
+                </ion-item>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+              <ion-row>
+                <ion-item lines="none">
+                  <p class="ppp">Parcel Confidentiality: {{bookingDetails[0][i]['parcelCon']}}</p>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item lines="none">
+                  <p class="ppp">Parcel Priority: {{bookingDetails[0][i]['parcelPrio']}}</p>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-item lines="none">
+                  <p class="ppp">Parcel Type: {{bookingDetails[0][i]['parcelType']}}</p>
+                </ion-item>
+              </ion-row>
+            </ion-col>
+            <ion-col sizeLg="4" sizeMd="4" sizeSd="4" sizeXs="4">
+              <ion-row>
+                <ion-item lines="none">
+                  <p>Delivery Date: {{book.bookingDate | slice:0:10}}</p>
+                </ion-item>
+              </ion-row>
+            </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+</ion-content>

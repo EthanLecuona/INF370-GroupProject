@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','configure-settings']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons> -->
+    <ion-title>App Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid>
+  <ion-row>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+      <form class="editLogoutTimerForm" [formGroup]="editLogoutTimerForm">
+        <ion-label class="title">Edit Logout Timer</ion-label>
+        <ion-item>
+          <ion-label position="floating">Set Automatic Logout Timer</ion-label>
+          <ion-input type="number" min="1" formControlName="logoutTimer"></ion-input>
+        </ion-item>
+        <br>
+       
+          <ion-button expand="block" color="secondary" [disabled]="!editLogoutTimerForm.valid" (click)="submit()">Edit</ion-button>
+          <ion-button expand="block" (click)="back()" id="cancelBtn" color="primary">Cancel</ion-button>
+      </form>
+    </ion-col>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

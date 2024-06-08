@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','project-main']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Project</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-button expand="block" color="primary" href="admin/project/add-project">Add Project</ion-button> 
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="myForm">
+          <ion-grid id="projectGrid" class="ion-margin table">
+            <ion-row class="table-main">
+              <ion-col size="12">
+                <ion-title>
+                  <ion-text color="default">Projects</ion-text>
+                </ion-title>
+              </ion-col>
+            </ion-row>
+              <ion-row class="table-header">
+              <ion-col class="table-col" size="6">
+                <ion-text>Project Name</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="6">
+                <ion-text>View Project</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="table-row" *ngFor="let proj of projectList | filter: searchTerm">
+              <ion-col class="table-col" size="6">
+                <ion-text>{{proj.projectName}}</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="6">
+                   <ion-button expand="block" color="primary" [routerLink]="['view-project' , proj.projectId]" >View Project</ion-button>
+                </ion-col>
+            </ion-row >  
+          </ion-grid>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>
+    
+  
+

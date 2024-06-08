@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','post-inspection']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons> -->
+    <ion-title>Post Inspection</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="InspectionForm" class="inspectionForm">
+          <h3  class="title">Post Inspection Form</h3>
+          <ion-item>
+            <ion-label position="floating">Inspection Photos:</ion-label>
+            <br>
+            <input type="file" id="file" name="file" multiple="" (change)="openGallery($event)">
+          </ion-item>
+          <br>
+          <br>
+          <ion-item>
+            <ion-label>Odometer Reading:</ion-label>
+            <ion-input type="number" formControlName="postInspectionOdometer"></ion-input>
+          </ion-item>
+          <br>
+          <br>
+          
+          <ion-item>
+            <ion-label>Extra Notes: <small>Optional</small></ion-label>
+            
+            <ion-textarea type="text" formControlName="postInspectionNotes"></ion-textarea>
+          </ion-item>
+          <br>
+          <br>
+          <ion-item>
+            <ion-label>Checked Tires:</ion-label>
+            <ion-checkbox type="checkbox" id="tires" [checked]="checkedTires" (ionChange)="checkTires($event)"></ion-checkbox>
+          </ion-item>
+          <br>
+          <br>
+          <ion-button expand="block" color="primary" [disabled]="!InspectionForm.valid && !checkedTires" (click)="completeInspection()">Complete Post Inspection</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

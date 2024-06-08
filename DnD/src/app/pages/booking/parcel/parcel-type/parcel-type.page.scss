@@ -1,0 +1,62 @@
+ion-content{
+  text-align: center;
+  align-items: center;
+  ion-item{
+    --background: transparent;
+    color: black;
+  }
+  ion-button{
+    display: inline-block;
+    padding-right: 5px;
+  }
+.parcel-types{
+    --background: white;
+}
+.addParcelTypeForm{
+    border-color: black;
+    background-color: white;
+    margin-top: 3%;
+    text-align: center;
+    border-radius: 2vh;
+    color: black;
+    
+}
+.typeForm{
+    background-color: white;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+    margin-top: 3%;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    padding: 1%;
+    .table-main{
+      width: 100%;
+      background-color: #001844;
+      font-weight: bold;
+      width: 100%;
+      color: white;
+      }
+      .table-header{
+        background-color: #869ec3;
+      }
+}
+.table {
+  --ion-grid-column-padding: 10px;
+  border-collapse: collapse;
+  border-style: hidden;
+  .table-col{
+    border: 1px solid black;
+    border-bottom: 0.7;
+    border-right: 0;
+  }
+  .table-col:last-child{
+    border-right: 1px solid black;
+  }
+  
+  .table-row:last-child{
+    border-bottom: 1px solid black;
+  }
+
+}
+}

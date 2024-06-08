@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','delete-maintenance']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>deleteMaintenance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form id="maintenanceForm">
+  <label id="label" class="text-center" font-weight="bold">Edit Delivery Vehicle</label>
+  <br>
+  <br>
+  <ion-item >
+    <ion-label position="floating">Registration Number</ion-label>
+    <ion-input readonly="true" type="text" formControlName="regNumber"></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label position="floating">Email Address</ion-label>
+    <ion-input readonly="true" type="text" formControlName="regNumber"></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label position="floating">Email Body</ion-label>
+    <ion-textarea readonly="true" type="text" formControlName="body"></ion-textarea>
+  </ion-item>
+</form>
+</ion-content>

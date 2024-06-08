@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','edit-incident-status']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Edit Incident Status</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="6" sizeSm="6" sizeXs="12">
+        <form [formGroup]="editIncidentStatus" id="editIncidentStatus">
+          <br>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Incident Status</ion-label>
+            <ion-input type="text" formControlName="status"></ion-input>
+          </ion-item>
+          <br>
+            <!-- <div *ngIf="editVehicleForm.get('vehicleRegistration').invalid && (editVehicleForm.get('vehicleRegistration').dirty || editVehicleForm.get('vehicleRegistration').touched)"class="alert alert-danger">
+              <label id="errortext">A vehicle registration number must contain at least 8 characters and end in the province code.</label>
+            </div> -->
+          <br>
+          <div class="button-bar">
+            <ion-button expand="block" color="secondary" (click)="editStatus()" [disabled]="!editIncidentStatus.valid">Edit</ion-button>
+            <ion-button expand="block" color="primary" href="/driver/incident/add-incident-status">Cancel</ion-button>
+            <ion-button expand="block" (click)="delStatus()" color="danger">Delete <ion-icon name="trash-outline"></ion-icon></ion-button>
+          </div>
+       
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>  
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','add-maintenance']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add Maintenance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3"  sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6"  sizeXs="12">
+        <form [formGroup]="addMaintenanceForm" id="addMaintenanceForm">
+          <label class="title">Add Vehicle Maintenance</label>
+          <br>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Vehicle Registration Number</ion-label>
+            <ion-select interface="popover" formControlName="registrationNumber" >
+              <ion-select-option  *ngFor="let v of vehicleData let i = index" value="{{[v.regID, i]}}">{{v.registrationNumber}} {{v.manufacturerName}} {{v.modelName}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <br>
+
+          <br>
+          <!-- <ion-item >
+            <ion-label position="floating">Recorded KM</ion-label>
+            <ion-input type="text" formControlName="recordedKM"></ion-input>
+          </ion-item>
+          <br> -->
+          <ion-item>
+            <ion-datetime presentation="date" formControlName="date" displayFormat="YYYY/MM/DD" showDefaultTimeLabel="{{false}}" min="{{CurrentDate}}" ></ion-datetime>
+          </ion-item>
+          <br>
+
+            <ion-item>
+              <ion-label position="floating">Select Mechanic</ion-label>
+              <ion-select interface="popover" formControlName="mechanic">
+                <ion-select-option  *ngFor="let mech of mechanicList let i = index"  value="{{[mech.mechanicId, i]}}">{{mech.mechanicName}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+        
+            <br>
+            
+              <ion-button expand="block" id="Button" color="success" [disabled]="!addMaintenanceForm.valid" (click)="addMaintenanceAlert()">Add</ion-button>
+              <ion-button expand="block" id="Button" color="primary" href="admin/vehicle/maintenance">Cancel</ion-button>
+
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3"  sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

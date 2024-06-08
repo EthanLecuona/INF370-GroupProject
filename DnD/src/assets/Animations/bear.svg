@@ -1,0 +1,118 @@
+
+<svg version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+   y="0px" viewBox="0 0 383 436.454" xml:space="preserve">
+  <g id="SOURCE">
+  </g>
+
+
+
+  <g id="Ant_1_-_Big_Circles">
+    <circle class="bearcon-circ1 bearcirc-an1" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="127.006" cy="311.094" r="102.218"/>
+    <circle class="bearcon-circ2 bearcirc-an2" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="256.879" cy="311.594" r="101.718"/>
+    <circle class="bearcon-circ3 bearcirc-an3" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="289.915" cy="163.631" r="73.431"/>
+    <circle class="bearcon-circ4 bearcirc-an2" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="191.951" cy="95.219" r="48.836"/>
+    <circle class="bearcon-circ5 bearcirc-an4" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="94.414" cy="163.631" r="73.431"/>
+  </g>
+
+
+
+
+  <g id="Ant_2_-_Small_Circles">
+    <circle class="bearcirc-popin bearcircy1" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="146.484" cy="112.333" r="8.105"/>
+    <circle class="bearcirc-popin bearcircy2" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="237.572" cy="112.333" r="8.105"/>
+    <circle class="bearcirc-popin bearcircy3" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="318.623" cy="230.958" r="8.105"/>
+    <circle class="bearcirc-popin bearcircy4" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="64.626" cy="230.958" r="8.105"/>
+    <circle class="bearcirc-popin bearcircy5" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="192.001" cy="389.75" r="8.105"/>
+  </g>
+
+
+
+
+  <g id="Ant_3_Const_Lines">
+    
+      <line class="bearani-linelefttopface" fill="#FFFFFF" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" x1="170.001" y1="79.383" x2="47.87" y2="256.339"/>
+    
+      <line class="bearani-linerighttopface" fill="#FFFFFF" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" x1="215.835" y1="79.247" x2="338.883" y2="259"/>
+    
+      <line class="bearani-lineleftbotface" fill="#FFFFFF" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" x1="210.699" y1="411.625" x2="46.251" y2="207.25"/>
+    
+      <line class="bearani-linerightbotface" fill="#FFFFFF" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" x1="175.576" y1="411.625" x2="338.758" y2="207.25"/>
+    
+      <line class="bearani-linerighttophead" fill="#FFFFFF" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" x1="192.501" y1="112.333" x2="238.766" y2="112.333"/>
+    
+      <line class="bearani-linelefttophead" fill="#FFFFFF" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" x1="147.26" y1="112.333" x2="192.501" y2="112.333"/>
+  </g>
+
+
+
+
+  <g id="Ant_7_-_Planet_Circles">
+    <circle class="bearcirc-popin bearrighttorbcirc" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="319.622" cy="230.958" r="11.79"/>
+    <circle class="bearorbitals bearorbione" cx="331.412" cy="230.958" r="2.588"/>
+    <circle class="bearcirc-popin bearcentorbcirc " fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="192.805" cy="389.309" r="11.79"/>
+    <circle class="bearorbitals bearorbitwo" cx="192.805" cy="401.099" r="2.588"/>
+    <circle class="bearcirc-popin bearleftorbcirc" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" cx="65.964" cy="230.958" r="11.791"/>
+    <circle class="bearorbitals bearorbithree" cx="54.174" cy="230.958" r="2.588"/>
+  </g>
+
+
+
+  <g id="Ant_4_Head_Fill">
+    <polygon class="bearfilldemholes" fill="#FFFFFF" points="319.621,230.958 238.571,112.333 147.482,112.333 147.482,112.333 64.67,230.014 193,389.75  "/>
+  </g>
+
+
+
+
+  <g id="Ant_4_Ears_Fill">
+    <polygon class="bearfilldemholes" fill="#FFFFFF" points="107.646,168.942 85.982,126.5 109.732,99 147.482,112.333   "/>
+    <polyline class="bearfilldemholes" fill="#FFFFFF" points="277.924,169.929 238.5,112.333 276.25,99 300,126.5 277.924,169.929  "/>
+  </g>
+
+
+
+
+  <g id="Ant_4_Head_Stroke">
+    <polyline class="bearmainright" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" points="192.501,389.75 
+      319.621,230.958 238.571,112.333 192.501,112.333   "/>
+    <polyline class="bearmainleft" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" points="192.501,112.333 
+      147.482,112.333 147.482,112.333 64.67,230.014 192.501,389.75  "/>
+  </g>
+
+
+
+
+  <g id="Ant_4_Ears_Stroke">
+    <polyline class="bearmainears" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" points="238.5,112.333 
+      276.25,99 300,126.5 277.924,169.929   "/>
+    <polyline class="bearmainears" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" points="147.482,112.333 
+      109.732,99 85.982,126.5 107.646,168.942   "/>
+  </g>
+
+
+
+
+  <g id="Ant_5_-_Face">
+    <polyline class="bearmaineyes" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" points="192.514,217.188 
+      205.842,230.927 177.715,258.969 155.43,238.219 177.715,182.469 155.43,170.719   "/>
+    <polyline class="bearmaineyes" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" points="192.496,217.219 
+      179.009,231.052 207.136,259.094 229.421,238.344 207.136,182.594 229.421,170.844   "/>
+  </g>
+
+
+
+
+  <g id="Ant_6-_Face">
+    
+      <line class="bearmainmouth" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="192.496" y1="274.875" x2="203.663" y2="263.296"/>
+    
+      <line class="bearmainmouth" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="192.496" y1="274.843" x2="181.315" y2="263.315"/>
+  </g>
+
+
+
+</svg>
+
+
+
+  

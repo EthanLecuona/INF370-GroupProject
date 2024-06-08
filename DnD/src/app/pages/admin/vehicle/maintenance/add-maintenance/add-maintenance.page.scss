@@ -1,0 +1,52 @@
+ion-content{
+    text-align: center;
+    align-items: center;
+}
+
+
+form{
+    border-color: black;
+    border-radius: 10px;
+    box-shadow: 0px 2px 15px 5px black;
+    padding: 2vh;
+    .title{
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}
+
+#Button{
+ 
+
+    background-color: rgb(141, 181, 216) ;
+    border-radius: 5%;
+}
+
+ion-item{
+ 
+    margin: auto;
+    
+    --border-radius : 15px;
+}
+
+.item, .list, .item-content, .item-complex {
+    --ibackground-color: transparent !important;
+}
+
+  
+ion-label{
+    color: black;
+}
+ion-input{
+  color: black;
+}
+
+#label{
+
+    font-weight: bold;
+}
+
+#errortext{
+    text-align: center;
+    color: red;
+}

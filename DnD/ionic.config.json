@@ -1,0 +1,8 @@
+{
+  "name": "DnD",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

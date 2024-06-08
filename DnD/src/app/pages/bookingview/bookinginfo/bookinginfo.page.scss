@@ -1,0 +1,239 @@
+#parent{
+    display: none;
+}
+ion-modal {
+    text-align: center;
+    align-items: center;
+    color: black;
+    --padding: 2vh;
+    --width: fit-content;
+    --height: fit-content;
+    --min-width: 300px;
+    --min-height: 310px;
+    border-radius: 6px;
+    box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+    ion-item {
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+    }
+}
+ion-modal.wrapper {
+    margin-bottom: 10px;
+}
+ion-content{ 
+    text-align: center;
+    align-items: center;
+    ion-grid{
+        --ion-grid-column-padding: 0px;
+    }
+    .info-header{
+        font-size: 1rem;
+    }
+    .info-details{
+        background-color: white;
+        color: black;
+        margin: 2vh;
+        
+        svg{
+            height: 200px;
+            width: 200px;
+        }
+        .personal-details{
+            border-radius: 5vh;
+            background-color: #869ec3;
+            color: white;
+            box-shadow: 2px 3px 10px black;
+            margin: 2.5vh;
+        }
+        h2{
+            font-size: 2rem;
+        }
+        h3{
+            font-size: 1.2rem;
+        }
+        p{
+            font-size: 0.9rem;
+        }
+    }
+    .tabs{
+        margin-bottom: 2.5vh;
+        .header{
+            letter-spacing: 1px;
+            height: 7vh;
+            h1,p{
+            margin: 0;
+            color: #fff;
+            margin-left: 10px;
+            }
+            h1{
+            font-size: 1.2rem;
+            font-weight: bold;
+            }
+            p{
+            opacity: 0.7;
+            margin-top: 3px;
+            font-size: 0.8rem;
+            }
+            .calling{
+                ion-icon{
+                    margin-right: 15px;
+                    opacity: 0.7;
+                }
+            }
+        }
+        // margin-top: 20px;
+        ion-segment{
+            
+            ion-button{
+                --background: none;
+                --box-shadow: none;
+                ion-icon{
+                    color: black;
+                }
+            }
+            --background: none;
+            ion-segment-button{
+                font-size: 1rem;
+                --border-width: 0;
+                --padding-start: 8px;
+                --padding-end: 8px;
+                --padding-bottom: 3px;
+                --padding-top: 3px;
+                --background-checked: rgb(134, 158, 195);
+                --indicator-color: transparent;
+                // --color: #d1d1d1;
+                // --color-checked: #fff;
+                font-weight: bold;
+                border-radius: 22px;
+            }
+        }
+    }
+
+    .comments{
+        
+
+
+        .conversation{
+            background: url("https://cdn.discordapp.com/attachments/500969719659102209/1002651230859952128/100437-sketches-gradient-doodle-logo-pattern.jpg");
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            height: 60vh;
+            margin-top: 5px;
+            border-radius: 38px;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            .message{
+                
+                padding: 2vh;
+                border-radius: 2vh;
+                margin-bottom: 2vh;
+                margin-top: 1vh;
+                white-space: pre-wrap;
+                position: relative;
+          
+            }
+            .other-message{
+                position: relative;
+                background: #869EC3;
+                opacity: 1;
+                color: #fff;
+                box-shadow: 2px 5px 10px 5px black;
+            }
+            .my-message{
+                position: relative;
+                background: linear-gradient(180deg,#18ba79 0%, #1AED99 100%)  ;
+                color: #fff;
+                box-shadow: 2px 5px 5px 5px black;
+            }
+            .time{
+                display: block;
+                color: white;
+                float: right;
+                font-size: 0.8rem;
+                bottom: 0;
+                line-height: 0;
+                ion-button{
+                    --background: transparent;
+                    --box-shadow: none;
+                    border-radius: 0px;
+                    color: white;
+                    ion-icon{
+                        font-size: 1.2rem;
+                        color: red;
+                    }
+                }
+              
+                
+            }
+
+            .message-input{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    position: fixed;
+                    bottom: 6vh;
+                    left: 0;
+                    textarea{
+                        border: 1px solid #ddd;
+                        color: black;
+                        background: white;
+                        border-radius: 1vh;
+                        resize: none;
+                        width: 100%;
+                    }
+                    .send-button{
+                        margin-left: 10px;
+                        float: right;
+                        background: #feacac;
+                        padding: 12px 12px 9px 15px;
+                        border-radius: 50%;
+                        color: #fff;
+                        font-size: 1.31rem;
+                        a{
+                            color: white;
+                        }
+                    }
+                    .send-button:hover{
+                        a{
+                            color: black;
+                        }
+                    }
+                }
+            
+        }
+        .conversation::-webkit-scrollbar{
+            width: 0 !important;
+        }
+          
+    }
+    
+}
+
+.btn{
+    display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+    ion-content{ 
+        svg{
+            display: none;
+        }
+        .info-details{
+            h2{
+                font-size: 1rem;
+                font-weight: bold;
+            }
+            h3{
+                font-size: 0.8rem;
+                font-weight: bold;
+            }
+            p{
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

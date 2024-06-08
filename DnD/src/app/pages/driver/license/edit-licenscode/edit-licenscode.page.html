@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','edit-license-code']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Edit License Code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" size="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" size="12">
+        <form [formGroup]="editLicenseCodeForm" class="editLicenseCodeForm">
+          <ion-label class="title">Edit License Code</ion-label>
+          <ion-item >
+            <ion-label position="floating">License Code</ion-label>
+            <ion-input class="license-code" type="text" formControlName="code"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="editLicenseCodeForm.get('code').invalid && (editLicenseCodeForm.get('code').dirty || editLicenseCodeForm.get('code').touched)"class="alert alert-danger">
+            <label id="errortext">License Code required.</label>
+          </div>
+
+          <ion-button expand="block" color="success" (click)="editCodeAlert()" [disabled]="!editLicenseCodeForm.valid">Edit</ion-button>
+          <ion-button expand="block" color="primary" href="driver/license">Cancel</ion-button>
+          <ion-button expand="block" color="danger" (click)="deleteCodeAlert()">Delete<ion-icon name="trash-outline"></ion-icon></ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" size="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

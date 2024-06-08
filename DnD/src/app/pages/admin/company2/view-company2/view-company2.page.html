@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','view-company']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>View Company</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col  class="table" sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="viewCompanyForm">
+          <ion-label class="title">View Company</ion-label>
+          <ion-item>
+            <ion-label position="floating">Company Name</ion-label>
+            <ion-input type="text" formControlName="companyName" readonly=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Street Number</ion-label>
+            <ion-input type="number" formControlName="streetNumber" readonly=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Suburb</ion-label>
+            <ion-input type="text" formControlName="Suburb" readonly=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Street Name</ion-label>
+            <ion-input type="text" formControlName="streetName" readonly=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Postal Code</ion-label>
+            <ion-input type="number" formControlName="postalCode" readonly=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">City</ion-label>
+            <ion-input type="text" formControlName="city" readonly=""></ion-input>
+          </ion-item>
+          <ion-button expand="block" color="danger" (click)="presentDeactivateCompanyAlert()">Deactivate</ion-button>
+          <ion-button expand="block" color="primary" href="/admin/company">Back</ion-button>
+
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','add-driver-rating']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add Driver Rating</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+    <ion-grid id="companyGrid" class="ion-text-center">
+      <ion-row class="ion-margin">
+        <ion-col>
+          <ion-title>
+            <ion-text color="default" >Driver Rating</ion-text>
+          </ion-title>
+        </ion-col>
+      </ion-row>
+        <ion-row class="header-row">
+        <ion-col>
+          <ion-text>Driver Name</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Rating</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Edit Rating</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let driver of ratingsList | filter: searchTerm">
+        <ion-col>
+          <ion-text>{{driver.firstName}} {{driver.lastName}}</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>{{driver.rating}}</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-button [routerLink]="['/driver/rating/edit-driver-rating', driver.driverRatingId]">Edit</ion-button>
+        </ion-col>      
+      </ion-row>
+    </ion-grid>
+</ion-content>

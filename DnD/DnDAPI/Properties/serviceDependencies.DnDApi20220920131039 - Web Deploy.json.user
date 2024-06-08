@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "apis2": {
+      "restored": true,
+      "restoreTime": "2022-10-03T11:18:38.1938734Z"
+    },
+    "identityapp1": {
+      "restored": true,
+      "restoreTime": "2022-10-03T11:16:56.7308964Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2022-10-03T11:17:02.3998342Z"
+    }
+  },
+  "parameters": {
+    "apis2.subscriptionId": {
+      "Name": "apis2.subscriptionId",
+      "Type": "subscription",
+      "Value": "d96b92c0-798e-4678-b47f-0ff6c94ee7df"
+    },
+    "apis2.resourceGroupName": {
+      "Name": "apis2.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "DnD_Resource"
+    }
+  }
+}

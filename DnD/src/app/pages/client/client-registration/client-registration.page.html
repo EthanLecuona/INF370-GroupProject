@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>  
+    <!-- <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','client-registration']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons> -->
+    <ion-title>Client Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col class="container" sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+            <form [formGroup]="clientRegister" id="clientRegister">
+              <ion-label class="heading">Client Registration</ion-label>
+  
+              <ion-item>
+                <ion-label position="floating">Title:</ion-label>
+                <ion-select interface="popover" formControlName="title">
+                  <ion-select-option *ngFor="let tit of titles let i = index"value="{{[tit.titleId, i]}}">{{tit.title1}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <br>
+              <div *ngIf="clientRegister.get('title').invalid && (clientRegister.get('title').dirty || clientRegister.get('title').touched)"class="alert alert-danger">
+                <label id="errortext">Title required.</label>
+              </div>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Name:</ion-label>
+                <ion-input type="text" formControlName="firstname"></ion-input>
+              </ion-item>
+              <br>
+              <div *ngIf="clientRegister.get('firstname').invalid && (clientRegister.get('firstname').dirty || clientRegister.get('firstname').touched)"class="alert alert-danger">
+                <label id="errortext">Firstname required.</label>
+              </div>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Surname:</ion-label>
+                <ion-input type="text" formControlName="lastname"></ion-input>
+              </ion-item>
+              <br>
+              <div *ngIf="clientRegister.get('lastname').invalid && (clientRegister.get('lastname').dirty || clientRegister.get('lastname').touched)"class="alert alert-danger">
+                <label id="errortext">Surname required.</label>
+              </div>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Phone Number:</ion-label>
+                <ion-input type="text" formControlName="phoneNumber"></ion-input>
+              </ion-item>
+              <br>
+              <div *ngIf="clientRegister.get('phoneNumber').invalid && (clientRegister.get('phoneNumber').dirty || clientRegister.get('phoneNumber').touched)"class="alert alert-danger">
+                <label id="errortext">Phone Number must contain only numbers.</label>
+              </div>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Email Address:</ion-label>
+                <ion-input readonly="true" type="text" formControlName="email"></ion-input>
+              </ion-item>
+              <br>
+              <div *ngIf="clientRegister.get('email').invalid && (clientRegister.get('email').dirty || clientRegister.get('email').touched)"class="alert alert-danger">
+                <label id="errortext">Invalid Email address.</label>
+              </div>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Password:</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+              </ion-item>
+              <br>
+              <div *ngIf="clientRegister.get('password').invalid && (clientRegister.get('password').dirty || clientRegister.get('password').touched)"class="alert alert-danger">
+                <label id="errortext">A Password must contain at least one Lower case letter, one Uppercase letter, a number and a special character. And must be minimum 8 characters in length.</label>
+              </div>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Repeat Password:</ion-label>
+                <ion-input type="password" formControlName="passwordRepeat"></ion-input>
+              </ion-item>
+              <br>
+              <div *ngIf="clientRegister.get('passwordRepeat').invalid && (clientRegister.get('passwordRepeat').dirty || clientRegister.get('passwordRepeat').touched)"class="alert alert-danger">
+                <label id="errortext">Passwords must match</label>
+              </div>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Associated Company:</ion-label>
+                <ion-input readonly="true" formControlName="company"></ion-input>
+              </ion-item>
+              <br>
+              <div *ngIf="clientRegister.get('company').invalid && (clientRegister.get('company').dirty || clientRegister.get('company').touched)"class="alert alert-danger">
+                <label id="errortext">Select a Company.</label>
+              </div>
+              <div class="footer"> 
+                <ion-button id="Button" color="success"  (click)="addClient()" [disabled]="!clientRegister.valid">Register</ion-button>
+                <br>
+                <ion-text>Already have an account? Click <a href="home/login">here</a></ion-text> 
+              </div>
+            </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

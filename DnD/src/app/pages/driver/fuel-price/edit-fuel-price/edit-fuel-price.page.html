@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>
+    <ion-title>View Fuel Price</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="6" sizeSm="8" sizeXs="12">
+        <form [formGroup]="editFuelForm" class="editFuelPriceForm">
+          <label class="title" font-weight="bold">View Fuel Price</label>
+          <br>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Driver Name</ion-label>
+            <ion-input readonly="true" type="text" formControlName="driverId"></ion-input>
+          </ion-item>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Date</ion-label>
+            <ion-input readonly="true" type="text" formControlName="date"></ion-input>
+          </ion-item>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Price</ion-label>
+            <ion-input readonly="true" type="text" formControlName="price"></ion-input>
+          </ion-item>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Liters</ion-label>
+            <ion-input readonly="true" type="text" formControlName="liters"></ion-input>
+          </ion-item>
+         <img id="Pic">
+          <br>
+          <ion-button expand="block" color="primary" href="/driver/fuel-price">Cancel</ion-button>
+          <ion-button expand="block" (click)="deleteFuelAlert()" color="danger">Delete</ion-button>   
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','edit-manufacturer']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Edit Manufacturer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="editVehicleManufacturerForm" class="editVehicleManufacturerForm">
+          <label class="title" font-weight="bold">Edit Manufacturer</label>
+          <ion-item >
+            <ion-label position="floating">Manufacturer Code</ion-label>
+            <ion-input type="text" formControlName="manufacturerCode"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="editVehicleManufacturerForm.get('manufacturerCode').invalid && (editVehicleManufacturerForm.get('manufacturerCode').dirty || editVehicleManufacturerForm.get('manufacturerCode').touched)"class="alert alert-danger">
+          <label id="errortext">Manufacturer Code required</label>
+          </div>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Manufacturer Title</ion-label>
+            <ion-input type="text" formControlName="manufacturerTitle"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="editVehicleManufacturerForm.get('manufacturerTitle').invalid && (editVehicleManufacturerForm.get('manufacturerTitle').dirty || editVehicleManufacturerForm.get('manufacturerTitle').touched)"class="alert alert-danger">
+          <label id="errortext">Manufacturer Title required</label>
+          </div>
+          <br>
+          <ion-button expand="block" color="success" (click)="edtManufacturer()" [disabled]="!editVehicleManufacturerForm.valid">Edit</ion-button>
+          <ion-button expand="block" color="primary" href="admin/vehicle/manufacturer-model/manufacturer">Cancel</ion-button>
+          <ion-button expand="block" color="danger" (click)="delManufacturer()" color="danger">Delete</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','add-manufacturer']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add New Manufacturer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="addManufacturerForm" class="addManufacturerForm">
+          <label class="title" font-weight="bold">Add Vehicle Manufacturer</label>
+          <ion-item >
+            <ion-label position="floating">Manufacturer Code</ion-label>
+            <ion-input class="form-control" type="text" autocapitalize="words" formControlName="ManufacturerCode"></ion-input>
+          </ion-item>
+          <div *ngIf="addManufacturerForm.get('ManufacturerCode').invalid && (addManufacturerForm.get('ManufacturerCode').dirty || addManufacturerForm.get('ManufacturerCode').touched)" class="alert alert-danger">
+            <label id="errortext">A vehicle registration number must contain at least 8 characters and end in the province code.</label>
+          </div>
+          <ion-item >
+            <ion-label position="floating">Manufacturer Title </ion-label>
+            <ion-input type="text" formControlName="ManufacturerTitle"></ion-input>
+          </ion-item>
+          <div *ngIf="addManufacturerForm.get('ManufacturerTitle').invalid && (addManufacturerForm.get('ManufacturerTitle').dirty || addManufacturerForm.get('ManufacturerTitle').touched)"class="alert alert-danger">
+            <label id="errortext">Manufacturer title required</label>
+          </div>  
+          <ion-button expand="block" color="success" [disabled]="!addManufacturerForm.valid" (click)="addVehicleManufacturer()">Add</ion-button>
+          <ion-button expand="block" color="primary" href="admin/vehicle/manufacturer-model">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="3" sizeMd="2" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="6" sizeMd="8" sizeSm="8" sizeXs="12">
+        <ion-grid class="ion-text-center table">
+          <ion-row class="table-main">
+            <ion-col size="12">
+              <ion-title>
+                <ion-text color="default" >Vehicle Manufacturers</ion-text>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-row" *ngFor="let vehicle of vehicleMake | filter: searchTerm">
+            <ion-col class="table-col" size="6">
+              <ion-text>{{vehicle.manufacturerTitle}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="6">
+              <ion-button expand="block" color="primary" [routerLink]="['edit-manufacturer', vehicle.manufacturerId]">View</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col sizeLg="3" sizeMd="2" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

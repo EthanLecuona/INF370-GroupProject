@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','edit-company']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Edit Company</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="table">
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+      <form [formGroup]="editCompanyForm">
+        <ion-label class="title">Edit Company Profile</ion-label>
+        <br />
+        <br />
+        <ion-item>
+          <ion-label position="floating">Company Name:</ion-label>
+          <ion-input type="text" formControlName="companyName"></ion-input>
+        </ion-item>
+        <div *ngIf="editCompanyForm.get('companyName').invalid && (editCompanyForm.get('companyName').dirty || editCompanyForm.get('companyName').touched)"class="alert alert-danger">
+          <label id="errortext">A company name cannot be empty.</label>
+        </div>
+        <br />
+        <ion-item>
+          <ion-label position="floating">Street Name:</ion-label>
+          <ion-input type="text" formControlName="streetName"></ion-input>
+        </ion-item>
+        <div *ngIf="editCompanyForm.get('streetName').invalid && (editCompanyForm.get('streetName').dirty || editCompanyForm.get('streetName').touched)"class="alert alert-danger">
+          <label id="errortext">A street name cannot contain numbers or special characters.</label>
+        </div>
+        <br />
+        <ion-item>
+          <ion-label position="floating">Street Number:</ion-label>
+          <ion-input type="text" formControlName="streetNumber"></ion-input>
+        </ion-item>
+        <div *ngIf="editCompanyForm.get('streetNumber').invalid && (editCompanyForm.get('streetNumber').dirty || editCompanyForm.get('streetNumber').touched)"class="alert alert-danger">
+          <label id="errortext">A street number only requires a number and cannot exceed 8 digits in length.</label>
+        </div>
+        <br />
+        <ion-item>
+          <ion-label position="floating">Suburb:</ion-label>
+          <ion-input type="text" formControlName="suburb"></ion-input>
+        </ion-item>
+        <div *ngIf="editCompanyForm.get('suburb').invalid && (editCompanyForm.get('suburb').dirty || editCompanyForm.get('suburb').touched)"class="alert alert-danger">
+          <label id="errortext">A suburb cannot contain special characters</label>
+        </div>
+        <br />
+        <ion-item>
+          <ion-label position="floating">Postal Code:</ion-label>
+          <ion-input type="text" formControlName="postalCode"></ion-input>
+        </ion-item>
+        <div *ngIf="editCompanyForm.get('postalCode').invalid && (editCompanyForm.get('postalCode').dirty || editCompanyForm.get('postalCode').touched)"class="alert alert-danger">
+          <label id="errortext">South African Postal codes are 4 digits in length.</label>
+        </div>
+        <br />
+        <ion-item>
+          <ion-label position="floating">City:</ion-label>
+          <ion-input type="text" formControlName="city"></ion-input>
+        </ion-item>
+
+        <div *ngIf="editCompanyForm.get('city').invalid && (editCompanyForm.get('city').dirty || editCompanyForm.get('city').touched)"class="alert alert-danger">
+          <label id="errortext">A city can only contain letters.</label>
+        </div>
+        <ion-button expand="block" color="success" [disabled]="!editCompanyForm.valid" (click)="presentUpdateCompanyAlert()">Update</ion-button>
+        <ion-button expand="block" color="primary" href="admin/company">Cancel</ion-button>
+
+      </form>
+    </ion-col>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+  </ion-grid>
+
+</ion-content>

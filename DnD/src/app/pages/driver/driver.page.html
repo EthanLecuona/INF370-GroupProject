@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','driver']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Driver</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-button *ngIf="this.userService.userRole == 'admin'" href="/driver/register">Register Driver</ion-button>
+<ion-button *ngIf="this.userService.userRole == 'admin'" href="/driver/rating/add-driver-rating">Driver rating</ion-button>
+<ion-button *ngIf="this.userService.userRole == 'admin'" href="/driver/rating/add-rating">rating</ion-button>
+<ion-button *ngIf="this.userService.userRole == 'admin'" href="/driver/license">License</ion-button>
+<ion-button href="/driver/incident">Incident</ion-button>
+
+<div *ngIf=" role == 'admin'" >
+  <!-- <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar> -->
+
+  <ion-grid id="companyGrid" class="ion-text-center">
+    <ion-row class="ion-margin">
+      <ion-col>
+        <ion-title>
+          <ion-text color="default" >Driver License</ion-text>
+        </ion-title>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="3" sizeMd="3" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="6" sizeMd="6" sizeSm="8" sizeXs="12" class="the-table">
+          <ion-grid class="ion-text-center table">
+            <ion-row class="table-main">
+              <ion-col>
+                <ion-title>
+                  <ion-text color="default" >Driver License</ion-text>
+                </ion-title>
+              </ion-col>
+            </ion-row>
+              <ion-row class="table-header">
+              <ion-col class="table-col" size="2.4">
+                <ion-text>Driver Username</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>Expiration Date</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>License Number</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>Driver Rating</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>Delete License</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="table-row" *ngFor="let driver of driverInfo | filter: searchTerm">
+              <ion-col class="table-col" size="2.4">
+                <ion-text>{{driver.firstname}} {{driver.lastname}}</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>{{driver.expDate.split('T')[0]}}</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>{{driver.licenseNumber}}</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-text>{{driver.driverRating}}</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="2.4">
+                <ion-button expand="block" color="danger"  (click)="deleteAlert(driver.driverId)">Delete</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </ion-col>
+      <ion-col sizeLg="3" sizeMd="3" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</div>
+
+<div *ngIf="role == 'driver'" >
+  <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+
+  <ion-grid id="companyGrid" class="ion-text-center">
+    <ion-row class="ion-margin">
+      <ion-col>
+        <ion-title>
+          <ion-text color="default" >Driver License</ion-text>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+      <ion-row class="header-row">
+      <ion-col>
+        <ion-text>Full name</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>Expiration Date</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>License Number</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>My Rating</ion-text>
+      </ion-col>
+     
+    </ion-row>
+    <ion-row *ngFor="let driver of driver | filter: searchTerm">
+      <ion-col>
+        <ion-text>{{driver.firstname}} {{driver.lastname}}</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>{{driver.expDate.split('T')[0]}}</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>{{driver.licenseNumber}}</ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text>{{driver.driverRating}}</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</div>
+
+</ion-content>

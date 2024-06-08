@@ -1,0 +1,44 @@
+ion-content{
+    text-align: center;
+    align-items: center;
+    .container{
+        margin-top: 2vh;
+        box-shadow: 1px 1px 15px 2px black;
+        border-radius: 50px;
+        align-items: center;
+        form{
+            padding: 2vh;
+            
+            ion-item{
+                padding-top: 2vh;
+            }
+            .heading{
+                font-size: 1.5em;
+                text-align: center;
+            }
+            .footer{
+                display: block;
+                ion-button{
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+
+#errortext{
+    color: red;
+}
+
+@media screen and (max-width: 768px) {
+    .image{
+        display: none;
+    }
+    
+}
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','user-main']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-button href="/user/assign-user-role">Assign User Role</ion-button> -->
+  <!-- <ion-button href="/user/deactivate-user-profile">Deactivate User Profile</ion-button> -->
+  <!-- <ion-button href="/user/edit-user-profile">Edit User Profile</ion-button> -->
+  <!-- <ion-button href="/user/edit-user-role">Edit User Role</ion-button> -->
+  <!-- <ion-button href="/user/search-user-profile">Search User Profile</ion-button> -->
+  <!-- <ion-button href="/user/search-user-roles">Search user Role</ion-button> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="12"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="12">
+        <ion-button expand="block" color="success" href="/admin/user/add-user-role">Configure User Roles</ion-button>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="12"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="12"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="12">
+        <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="12"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="12"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="12">
+        <ion-grid id="companyGrid" class="ion-text-center table">
+          <ion-row class="table-main">
+            <ion-col>
+              <ion-title>
+                <ion-text color="default">Users</ion-text>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+            <ion-row class="table-header">
+            <ion-col class="table-col" size="6">
+              <ion-text>User Name</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="6">
+              <ion-text>Edit Users</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-row" *ngFor="let u of users | filter: searchTerm">
+            <ion-col class="table-col" size="6">
+              <ion-text>{{u.firstname}} {{u.lastname}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="6">
+                <ion-button expand="block" color="secondary" [routerLink]="['edit-user-profile', u.id]">Edit User</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="12"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

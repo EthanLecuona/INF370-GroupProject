@@ -1,0 +1,35 @@
+.container{
+    width: 75vh;
+    height: 50vh;
+    margin-top: 5vh;
+    margin-left: 5vh;
+    ion-button{
+        width: 10vh;
+        height: 4vh;
+        margin-right: 3vh;
+    }
+
+    .button-bar{
+        display: inline;
+        justify-content: space-between;
+        align-items: center;
+        
+        a{
+            position:relative;
+            top:50%;
+            width: 10vh;
+            height: 4vh;
+            text-decoration: none;
+            
+            ion-icon{
+                
+                font-size: 2rem;
+                color: red;
+                bottom: 0;
+            }
+        }
+    }
+
+  
+ 
+}

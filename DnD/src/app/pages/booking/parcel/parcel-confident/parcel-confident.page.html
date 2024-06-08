@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','configure-parcel-confident']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Configure Parcel Confidentiality</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="4" sizeXs="0"></ion-col>
+        <ion-col class="addConfidentForm" sizeLg="4" sizeMd="4" sizeSm="4" sizeXs="12">
+          <form [formGroup]="addConfidentForm" class="addConfidentForm">
+          <ion-item>
+            <ion-label position="floating">Confidentiality Level:</ion-label>
+            <ion-input type="text" formControlName="confidentiality" placeholder="E.g. High, Medium, Low"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="addConfidentForm.get('confidentiality').invalid && (addConfidentForm.get('confidentiality').dirty || addConfidentForm.get('confidentiality').touched)"class="alert alert-danger">
+            <label id="errortext">Confidentiality Level required</label>
+          </div>
+          <br />
+          <ion-button id="Button" color="success" (click)="addConfident()">Add</ion-button>
+          <ion-button id="Button" color="primary" href="booking">Cancel</ion-button>
+          </form>
+        </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="4" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+<form class="confidentForm">
+  <ion-grid class="ion-text-center table">
+    <ion-row class="table-main">
+      <ion-col size="12">
+        <ion-title>
+          <ion-text color="default">Existing Parcel Confidentialities</ion-text>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-row class="table-header">
+      <ion-col class="table-col" size="6">
+        <ion-text>Confidentiality Level</ion-text>
+      </ion-col>
+      <ion-col class="table-col" size="6">
+        <ion-text>Configure Confidentiality</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="table-row" *ngFor="let con of confidentList">
+      <ion-col class="table-col" size="6">
+        <ion-text>{{con.confidentiality}}</ion-text>
+      </ion-col>
+      <ion-col class="table-col" size="6">
+        <ion-button  id="Button" color="danger" (click)="deleteConfident(con.parcelConId)">Delete</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+</ion-content>

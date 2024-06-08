@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','schedulemaps']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Parcel Scan and Pre-Trip Inspection</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="6" sizeSm="6" sizeXs="12">
+        <div class="preInspection">
+          <h2>Delivery schedule for {{driverName}} on {{selectedDate}}</h2>
+          <br>
+          <h3>To Deliver: x{{amountParcelsEPI}}</h3>
+          <br>
+          <h3>To Collect: x{{amountParcelOther}}</h3>
+          <br>
+          <h3>QR codes scanned: </h3>
+          <p>{{QRscanned}}</p>
+          <br>
+          <ion-button (click)="scanQR()">Scan Parcel QR codes</ion-button>
+          <br>
+          <form [formGroup]="InspectionForm">
+            <h3>Pre-Trip Inspection Form</h3>
+            <ion-label >Inspection Photos:</ion-label>
+            <input type="file" id="file" name="file" multiple="" (change)="openGallery($event)">
+            <br>
+            <ion-label>Odometer Reading:</ion-label>
+            <ion-input type="number" formControlName="preInspectionOdometer"></ion-input>
+            <br>
+            <ion-label>Extra Notes:</ion-label> 
+            <small>Optional</small>
+            <ion-textarea type="text" formControlName="preInspectionNotes"></ion-textarea>
+          </form>
+          <br>
+          <ion-label>Checked Tires:</ion-label>
+          <ion-checkbox type="checkbox" id="tires" [checked]="checkedTires" (ionChange)="checkTires($event)"></ion-checkbox>
+          <br>
+          <ion-button id="Navigate" >Navigate</ion-button>
+          <!-- Check if files are selected [disabled]="!InspectionForm.valid && checkedTires == false" -->
+        
+        </div>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="map" id="map" #map></div>
+
+</ion-content>

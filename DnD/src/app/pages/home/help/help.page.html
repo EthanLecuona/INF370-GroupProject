@@ -1,0 +1,505 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>DnD Help Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="3" sizeMd="3" sizeSm="0" sizeXs="0" class="sidenav">
+        <aside>
+          <ion-searchbar placeholder="Search..." (ionChange)="handleChange($event)" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+          <div class="acc">
+            <div *ngIf="searchTerm == ''">
+              <ion-accordion-group>
+                <ion-accordion value="1">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Getting Started</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('home')">
+                    <a>Help Home Page</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="2">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Using The App</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('register')">
+                    <a>Register</a>   
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('passandOTP')">
+                    <a>OTP</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('passandOTP')">
+                    <a>Forgot Password</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="3">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Your Profile</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('profile')">
+                    <a>Profile</a>   
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('editprofile')">
+                    <a>Edit Your Profile</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('resetpassword')">
+                    <a>Reset Your Password</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="4">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Booking</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('booking')">
+                    <a>Booking</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('create-booking')">
+                    <a>Creating a Parcel Booking</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('bookingview')">
+                    <a>Search for a Booking</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('bookinginfo')">
+                    <a>View Parcel Booking Information</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('transport-info')">
+                    <a>View Transport Booking Information</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('tracking')">
+                    <a>Tracking a Booking In Progress</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="5">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Management</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('management')">
+                    <a>General Management</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('reports')">
+                    <a>Reports</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('event')">
+                    <a>Events</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-event')">
+                    <a>Adding an Event</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('delete-event')">
+                    <a>Deleting an Event</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-event')">
+                    <a>Updating an Event</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('view-event')">
+                    <a>Viewing an Event</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="6">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Configuring Users</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('user-main')">
+                    <a>Users</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('assign-user-role')">
+                    <a>Assign User Roles</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-user-profile')">
+                    <a>Edit User Profiles</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="7">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Employee</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('employee')">
+                    <a>General Employee</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('empclientregister')">
+                    <a>Registering a Client</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="8">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Driver</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('driver')">
+                    <a>General Driver</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('schedule')">
+                    <a>Viewing the driver schedule</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('schedule')">
+                    <a>Planned routes for the day</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('post-inspection')">
+                    <a>Post Inspection</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-incident')">
+                    <a>Adding an Incident</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('fuel-price-main')">
+                    <a>Refuelling a Vehicle</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('incident-main')">
+                    <a>Adding an Incident</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="9">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Client</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('client-dashboards')">
+                    <a>General Client</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('client-registration')">
+                    <a>Client Regsitration</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="10">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Vehicles</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('vehicle-main')">
+                    <a>General Vehicle</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-vehicle')">
+                    <a>Adding a Vehicle</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-vehicle')">
+                    <a>Edit Vehicle Details</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('maintenance-main')">
+                    <a>General Vehicle Maintenance</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-maintenance')">
+                    <a>Add Vehicle Maintenance</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('delete-maintenance')">
+                    <a>Delete Vehicle Maintenance</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-mechanic')">
+                    <a>Adding a Vehicle Mechanic</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('man-main')">
+                    <a>Vehicle Manufacturers and Models</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-manufacturer')">
+                    <a>Adding a Vehicle Manufacturer</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-manufacturer')">
+                    <a>Updating a Vehicle Manufacturer</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-model')">
+                    <a>Adding a Vehicle Model</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-model')">
+                    <a>Updating a Vehicle Model</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('vehicle-class-main')">
+                    <a>Configure Vehicle Classes</a>
+                  </div>
+                </ion-accordion>
+                <ion-accordion value="11">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Admin</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content" (click)="navigate('admin-main')">
+                    <a>General Admin</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-driver-rating')">
+                    <a>Adding a rating for a Driver</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-driver-rating')">
+                    <a>Updating a Driver's Rating</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-rating')">
+                    <a>Adding a New Rating</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-rating')">
+                    <a>Updating an Existing Rating</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('lisence')">
+                    <a>Adding a Drivers License</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-license-code')">
+                    <a>Adding a License Code</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-license-code')">
+                    <a>Updating a License Code</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-incident-status')">
+                    <a>Adding a New Incident Status</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-incident-status')">
+                    <a>Updating an Existing Incident Status</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('configure-parcel-confident')">
+                    <a>Configure Parcel Confidentialities</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('configure-parcel-priority')">
+                    <a>Configure Parcel Priorities</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('configure-parcel-type')">
+                    <a>Configure Parcel Types</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('configure-settings')">
+                    <a>Updating the Logout Timer</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('company-main')">
+                    <a>General Company</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-company')">
+                    <a>Adding a Company</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('edit-company')">
+                    <a>Updating a Company</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('view-company')">
+                    <a>Viewing a Company</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('project-main')">
+                    <a>General Project</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('add-project')">
+                    <a>Adding a Project</a>
+                  </div>
+                  <div class="ion-padding" slot="content" (click)="navigate('view-project')">
+                    <a>Marking a Project as Complete</a>
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </div>
+            <div *ngIf="(searchTerm != '') && (index != -1)">
+              <div *ngFor="let page of searchArray let i = index">
+                <div class="ion-padding" slot="content" (click)="navigate(searchArray[i]['link'])">
+                  <a>{{searchArray[i]['name']}}</a>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="(index == -1)">
+              <ion-label>No results Found...</ion-label>
+            </div>
+          </div>
+        </aside>
+      </ion-col>
+      <ion-col class="help-col">
+        <div [ngSwitch]="type">
+          <div class="help-content">
+            <div *ngIf="activeTab == 'home'">
+              <embed src="../../../../assets/Help/Help_Documentation.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'register'">
+              <embed src="../../../../assets/Help/Register.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'booking'">
+              <embed src="../../../../assets/Help/Parcels.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'management'">
+              <embed src="../../../../assets/Help/ManagementDash.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'employee'">
+              <embed src="../../../../assets/Help/EmployeeDash.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'reports'">
+              <embed src="../../../../assets/Help/Reports.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'user'">
+              <embed src="../../../../assets/Help/User_Roles.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'profile'">
+              <embed src="../../../../assets/Help/Edit_User_Profile.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'resetpassword'">
+              <embed src="../../../../assets/Help/One_Time_Pin-Forgot_PAssword.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'editprofile'">
+              <embed src="../../../../assets/Help/Edit_User_Profile.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'empclientregister'">
+              <embed src="../../../../assets/Help/Register.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'event'">
+              <embed src="../../../../assets/Help/Events.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'passandOTP'">
+              <embed src="../../../../assets/Help/One_Time_Pin-Forgot_PAssword.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'driver'">
+              <embed src="../../../../assets/Help/DriverDash.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'schedulemaps'">
+              <embed src="../../../../assets/Help/Schedules.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'schedule'">
+              <embed src="../../../../assets/Help/Schedules.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-driver-rating'">
+              <embed src="../../../../assets/Help/add_Driver_Rating_screen.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-rating'">
+              <embed src="../../../../assets/Help/" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-driver-rating'">
+              <embed src="../../../../assets/Help/Edit_Driver_Rating.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-rating'">
+              <embed src="../../../../assets/Help/Edit_Rating.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'post-inspection'">
+              <embed src="../../../../assets/Help/" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'license'">
+              <embed src="../../../../assets/Help/License.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-license-code'">
+              <embed src="../../../../assets/Help/LicenseCode.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-license-code'">
+              <embed src="../../../../assets/Help/LicenseCode.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'incident-main'">
+              <embed src="../../../../assets/Help/ResolveIncidents.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-incident'">
+              <embed src="../../../../assets/Help/ResolveIncidents.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-incident-status'">
+              <embed src="../../../../assets/Help/" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-incident-status'">
+              <embed src="../../../../assets/Help/" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'fuel-price-main'">
+              <embed src="../../../../assets/Help/FuelPrice.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'client-registration'">
+              <embed src="../../../../assets/Help/" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'client-dashboard'">
+              <embed src="../../../../assets/Help/ClientDash.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'bookingview'">
+              <embed src="../../../../assets/Help/Parcels.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'bookinginfo'">
+              <embed src="../../../../assets/Help/Parcels.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'tracking'">
+              <embed src="../../../../assets/Help/" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'transport-info'">
+              <embed src="../../../../assets/Help/Transportation.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'create-booking'">
+              <embed src="../../../../assets/Help/Parcels.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'configure-parcel-confident'">
+              <embed src="../../../../assets/Help/ParcelConfidentiality.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'configure-parcel-priority'">
+              <embed src="../../../../assets/Help/ParcelPriority.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'configure-parcel-type'">
+              <embed src="../../../../assets/Help/ParcelType.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'admin-main'">
+              <embed src="../../../../assets/Help/AdminDash.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'configure-settings'">
+              <embed src="../../../../assets/Help/" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'company-main'">
+              <embed src="../../../../assets/Help/Company.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-company'">
+              <embed src="../../../../assets/Help/AddCompany.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-company'">
+              <embed src="../../../../assets/Help/EditCompany.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'view-company'">
+              <embed src="../../../../assets/Help/SearchViewDeactivateCompany.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'project-main'">
+              <embed src="../../../../assets/Help/Projects.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'view-project'">
+              <embed src="../../../../assets/Help/Projects.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-project'">
+              <embed src="../../../../assets/Help/Projects.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'user-main'">
+              <embed src="../../../../assets/Help/User_Roles.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'assign-user-role'">
+              <embed src="../../../../assets/Help/Assign_User_Role.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-user-profile'">
+              <embed src="../../../../assets/Help/Edit-Deactivate-Users.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'vehicle-main'">
+              <embed src="../../../../assets/Help/Vehicle_General.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-vehicle'">
+              <embed src="../../../../assets/Help/Add_Vehicle.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-vehicle'">
+              <embed src="../../../../assets/Help/Edit_Vehicle.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'maintenance-main'">
+              <embed src="../../../../assets/Help/Maintenance.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-maintenance'">
+              <embed src="../../../../assets/Help/Maintenance.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-mechanic'">
+              <embed src="../../../../assets/Help/Mechanic.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'delete-maintenance'">
+              <embed src="../../../../assets/Help/Maintenance.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'man-main'">
+              <embed src="../../../../assets/Help/Manufacturer-Model.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-manufacturer'">
+              <embed src="../../../../assets/Help/Add_Manufacturer.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-manufacturer'">
+              <embed src="../../../../assets/Help/Edit_Manufacturer.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-model'">
+              <embed src="../../../../assets/Help/AddModel.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-model'">
+              <embed src="../../../../assets/Help/Edit-Delete_Model.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'vehicle-class-main'">
+              <embed src="../../../../assets/Help/Vehicle_Class.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'add-event'">
+              <embed src="../../../../assets/Help/Add_Event.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'delete-event'">
+              <embed src="../../../../assets/Help/Delete_Event.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'edit-event'">
+              <embed src="../../../../assets/Help/Update_Event_.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+            <div *ngIf="activeTab == 'view-event'">
+              <embed src="../../../../assets/Help/View_Event.pdf" width="1000px" height="1000px" type="application/pdf">
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

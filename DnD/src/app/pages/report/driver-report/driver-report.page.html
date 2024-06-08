@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-buttons slot="start">
+        <ion-menu-button color="dark"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Driver Report
+      </ion-title>
+      <ion-button expand="block" class="settings" (click)="pdf()">Generate PDF</ion-button>
+      <ion-button color="primary" class="settings" (click)="presentPopover($event)" ion-button icon-only clear>
+        Reports
+        <ion-icon name="document-outline"></ion-icon>
+      </ion-button>
+
+
+    <ion-popover #popover [dismissOnSelect]="true" [isOpen]="isOpen" (didDismiss)="isOpen = false">
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item (click)="bookingCancel()">Booking Cancellation Report</ion-item>
+            <ion-item (click)="vehicleReport()">Vehicle Report</ion-item>
+            <ion-item (click)="maintenance()">Maintenance Report</ion-item>
+            <ion-item (click)="driverReport()">Driver Report</ion-item>
+            <ion-item (click)="fuelReport()">Fuel Report</ion-item>
+            <ion-item (click)="auditLogReport()">Audit Log Report</ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="type" (ionChange)="tabChange($event)">
+    <ion-button (click)="back()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+    <ion-segment-button value="graphs">
+      <ion-label class="seg">Graphs</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="tables">
+      <ion-label class="seg">Tables</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+<div id="driverPDF">
+  <div [ngSwitch]="type">
+    <div [hidden]="activateTab != 'graphs'">
+      <br>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <br>
+              <br>
+              <br>
+              <br>
+              <canvas #doughNutChart></canvas>
+            </ion-col>
+            <ion-col size="6">
+              <br>
+              <ion-row class="the-table">
+                <ion-col size="6">
+                  <ion-select interface="popover" (ionChange)="pickedYear($event.target.value)" placeholder="Year">
+                    <ion-select-option *ngFor="let year of yearNames" [value]="year">{{year}}</ion-select-option>
+                  </ion-select>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-select interface="popover" (ionChange)="pickedMonth($event.target.value)" disabled="{{!yearSelected}}" placeholder="Month">
+                    <ion-select-option *ngFor="let i = index let month of monthNames" [value]="i">{{month}}</ion-select-option>
+                  </ion-select>
+                </ion-col>
+                <canvas #lineChart>
+                </canvas>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </div>
+    <div [hidden]="activateTab != 'tables'">
+      <br>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4"></ion-col>
+            <ion-col size="4">
+              <ion-select interface="popover" (ionChange)="pickedDriver($event.target.value)" placeholder="All Drivers">
+                <ion-select-option *ngFor="let driver of driverNames" [value]="driver">{{driver}}</ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col size="4"></ion-col>
+          </ion-row>
+          <br>
+          <ion-row>
+            <ion-col size="4">
+              <div class="grid-box">
+                <ion-text>Total Distance</ion-text>
+                <br>
+                <ion-text style="font-size: larger;">{{totalDistanceDriven}} Km</ion-text>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <div class="grid-box">
+                <ion-text>Total Trips</ion-text>
+                <br>
+                <ion-text style="font-size: larger;">{{totalTrips}}</ion-text>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <div class="grid-box">
+                <ion-text>Average Distance Driven</ion-text>
+                <br>
+                <ion-text style="font-size: larger;">{{averageDistanceDriven}} Km</ion-text>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table">
+            <ion-col size="12" class="the-table">
+              <ion-row>
+                <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+                <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+                  <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+                </ion-col>
+                <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+              </ion-row>
+              <ion-row class="table-main">
+                <ion-col size="12">
+                  <ion-label >Driver Report</ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row class="table-header">
+                <ion-col class="table-col">
+                  <ion-label>Driver</ion-label>
+                </ion-col>
+                <ion-col class="table-col">
+                  <ion-label>Date</ion-label>
+                </ion-col>
+                <ion-col class="table-col">
+                  <ion-label>Actual Distance</ion-label>
+                </ion-col>
+                <ion-col class="table-col">
+                  <ion-label>Predicted Distance</ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngFor="let item of dataForTable | filter: searchTerm" class="table-row">
+                <ion-col class="table-col">
+                  <ion-label class="table-data-item">{{item.driver}}</ion-label>
+                </ion-col>
+                <ion-col class="table-col">
+                  <ion-label class="table-data-item">{{item.date}}</ion-label>
+                </ion-col>
+                <ion-col class="table-col">
+                  <ion-label class="table-data-item">{{item.actualDistance}}</ion-label>
+                </ion-col>
+                <ion-col class="table-col">
+                  <ion-label class="table-data-item">{{item.distance}}</ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </div>
+  </div>
+</div>
+</ion-content>

@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','add-company']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add Company Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col class="table" sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="addCompanyForm" id="addCompanyForm">
+          <ion-label class="title">Add Company Profile</ion-label>
+          <br />
+          <br />
+          <ion-item>
+            <ion-label position="floating">Company Name:</ion-label>
+            <ion-input type="text" formControlName="companyName"></ion-input>
+          </ion-item>
+          <div *ngIf="addCompanyForm.get('companyName').invalid && (addCompanyForm.get('companyName').dirty || addCompanyForm.get('companyName').touched)"class="alert alert-danger">
+            <label id="errortext">A company name cannot be empty.</label>
+          </div>
+          <br />
+          <ion-item>
+            <ion-label position="floating">Street Name:</ion-label>
+            <ion-input type="text" placeholder="Albert Street" formControlName="streetName"></ion-input>
+          </ion-item>
+          <div *ngIf="addCompanyForm.get('streetName').invalid && (addCompanyForm.get('streetName').dirty || addCompanyForm.get('streetName').touched)"class="alert alert-danger">
+            <label id="errortext">A street name cannot contain numbers or special characters.</label>
+          </div>
+          <br />
+          <ion-item>
+            <ion-label position="floating">Street Number:</ion-label>
+            <ion-input type="text" placeholder="10" formControlName="streetNumber"></ion-input>
+          </ion-item>
+          <div *ngIf="addCompanyForm.get('streetNumber').invalid && (addCompanyForm.get('streetNumber').dirty || addCompanyForm.get('streetNumber').touched)"class="alert alert-danger">
+            <label id="errortext">A street number only requires a number and cannot exceed 8 digits in length.</label>
+          </div>
+          <br />
+          <ion-item>
+            <ion-label position="floating">Suburb:</ion-label>
+            <ion-input type="text" placeholder="Like Erasmuskloof" formControlName="suburb"></ion-input>
+          </ion-item>
+          <div *ngIf="addCompanyForm.get('suburb').invalid && (addCompanyForm.get('suburb').dirty || addCompanyForm.get('suburb').touched)"class="alert alert-danger">
+            <label id="errortext">A suburb cannot contain special characters</label>
+          </div>
+          <br />
+          <ion-item>
+            <ion-label position="floating">Postal Code:</ion-label>
+            <ion-input type="text" placeholder="0181" formControlName="postalCode"></ion-input>
+          </ion-item>
+          <div *ngIf="addCompanyForm.get('postalCode').invalid && (addCompanyForm.get('postalCode').dirty || addCompanyForm.get('postalCode').touched)"class="alert alert-danger">
+            <label id="errortext">South African Postal codes are 4 digits in length.</label>
+          </div>
+          <br />
+          <ion-item>
+            <ion-label position="floating">City:</ion-label>
+            <ion-input type="text" formControlName="city"></ion-input>
+          </ion-item>
+          <div *ngIf="addCompanyForm.get('city').invalid && (addCompanyForm.get('city').dirty || addCompanyForm.get('city').touched)"class="alert alert-danger">
+            <label id="errortext">A city can only contain letters.</label>
+          </div>
+          
+          <ion-button expand="block" color="success" [disabled]="!addCompanyForm.valid" (click)="presentAddCompanyAlert()">Add</ion-button>
+          <ion-button expand="block" color="primary" href="admin/company">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

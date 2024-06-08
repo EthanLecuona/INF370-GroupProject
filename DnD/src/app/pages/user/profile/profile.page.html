@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','profile']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="wrapper">
+  <div class="profile-card">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="profile-card-img">
+            <ion-img id="fileInput" class="image" [src]="this.userService.ProfilePicture"></ion-img>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <div class="content">
+              <div class="name">
+                <ion-label>{{this.userService.Firstname + " " + this.userService.Lastname}}</ion-label>
+              </div>
+              <div *ngIf="this.userService.userRole == 'client'" class="text">
+                Company
+              </div>
+            <form>
+              <div>
+                <ion-label class="heading">Phone Number</ion-label>
+                <ion-label class="text">{{this.userService.PhoneNumber}}</ion-label>
+              </div>
+              <div>
+                <ion-label class="heading">Email Address</ion-label>
+                <ion-label class="text">{{this.userService.email}}</ion-label>
+              </div>
+              <ion-button (click)="Edit()">Edit</ion-button>
+              <ion-button (click)="ResetPassword()">Reset Password</ion-button>
+            </form>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>
+</ion-content>

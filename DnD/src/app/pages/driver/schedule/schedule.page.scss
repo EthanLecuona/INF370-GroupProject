@@ -1,0 +1,21 @@
+ion-content{
+    text-align: center;
+    align-items: center;
+    ion-grid{
+        --ion-grid-column-padding: 0px;
+    }
+    ion-button{
+        display: inline-block;
+    }
+}
+
+mwl-calendar-month-view,mwl-calendar-week-view,mwl-calendar-day-view{
+    color: black;
+}
+
+@media (max-width: 768px) {
+    ion-button{
+        font-size: 0.7rem;
+    }
+}
+

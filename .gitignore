@@ -1,0 +1,12 @@
+*.cache
+*.editorconfig
+*.dll
+*.pdb
+*.cache
+*.cache
+DnD/DnDAPI/appsettings.json
+DnD/android
+DnD/DnDAPI/.vs
+DnD/DnDAPI/bin
+DnD/DnDAPI/obj
+*.vsidx

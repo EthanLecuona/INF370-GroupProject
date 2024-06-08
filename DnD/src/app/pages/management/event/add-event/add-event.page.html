@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','add-event']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid>
+  <ion-row>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    <ion-col class="container" sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+      <form [formGroup]="addEventForm" id="addEventForm" class="form-inline justify-content-center">
+      <h1 id="label" class="text-center" font-weight="bold">Add Event</h1>
+      <br>
+      <ion-item>
+        <ion-label  position="floating">Number of Employees</ion-label>
+        <ion-input value="number" formControlName="NumberOfEmployees" min="1" placeholder="1" required="true"></ion-input>
+      </ion-item>
+      <br>
+      <div *ngIf="addEventForm.get('NumberOfEmployees').invalid && (addEventForm.get('NumberOfEmployees').dirty || addEventForm.get('NumberOfEmployees').touched)"class="alert alert-danger">
+        <label id="errortext">Please state the number of employees going to the event</label>
+      </div>
+      <br>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea formControlName="Description" max="200" min="1" placeholder="Description of the event" required="true"></ion-textarea>
+      </ion-item>
+      <br>
+      <div *ngIf="addEventForm.get('Description').invalid && (addEventForm.get('Description').dirty || addEventForm.get('Description').touched)"class="alert alert-danger">
+        <label id="errortext">Please add a description of the event</label>
+      </div>
+      <br>
+      <ion-item>
+        <ion-label position="floating">Location</ion-label>
+        <ion-textarea formControlName="Location" max="100" min="1" placeholder="Location of the event" required="true"></ion-textarea>
+      </ion-item>
+      <br>
+      <div *ngIf="addEventForm.get('Location').invalid && (addEventForm.get('Location').dirty || addEventForm.get('Location').touched)"class="alert alert-danger">
+        <label id="errortext">Please add the location of the event</label>
+      </div>
+      <br>
+      <ion-item>
+        <ion-datetime color="dark" class="calendar" formControlName="EventDate" displayFormat="YYYY/MM/DD" presentation="date-time" min="{{currentDate}}">
+          <span slot="title">Select event date and time</span>
+        </ion-datetime>
+      </ion-item>
+      <ion-button class="button" color="success" [disabled]="!addEventForm.valid" (click)="addEvent()">Add Event</ion-button>
+      <ion-button class="button" color="danger" (click)="Cancel()">Cancel</ion-button>
+      <br>
+      </form>
+    </ion-col>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+
+<ion-col>
+
+</ion-col>
+</ion-row>
+</ion-grid>
+<!-- <div id="eventPic">
+  <img src="https://cdn.dribbble.com/users/1731254/screenshots/15807927/media/ff4c032ae5fb7d05835cda28e390b287.png?compress=1&resize=768x576&vertical=top">
+</div> -->
+</ion-content>

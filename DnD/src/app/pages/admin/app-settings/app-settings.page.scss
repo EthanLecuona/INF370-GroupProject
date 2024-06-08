@@ -1,0 +1,18 @@
+ion-content{
+  align-items: center;
+  text-align: center;
+  .editLogoutTimerForm{
+      margin-top: 2vh;
+      padding: 2vh;
+      border-radius: 15px;
+      box-shadow: 0px 2px 15px 5px black;
+      ion-item{
+          margin-top: 1vh;
+          margin-bottom: 1vh;
+      }
+      .title{
+          font-size: 1.2rem;
+      }
+  }
+
+}

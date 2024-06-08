@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add New User Role</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button href="admin/user/assign-user-role">Assign User Role</ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="addRoleForm" class="addRoleForm">
+          <ion-label class="title"> Add Role</ion-label>
+          <ion-item>
+            <ion-label position="floating">User Role Name</ion-label>
+            <ion-input type="text" formControlName="role"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="addRoleForm.get('role').invalid && (addRoleForm.get('role').dirty || addRoleForm.get('role').touched)"class="alert alert-danger">
+            <label id="errortext">User role may only contain letters</label>
+          </div>
+          <br>
+            <ion-button expand="block" color="success"  [disabled]="!addRoleForm.valid" (click)="addAlert()">Add</ion-button>
+            <ion-button expand="block" href="admin/user" id="cancelBtn" color="primary">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+  <form class="table">
+    <ion-grid id="companyGrid" class="ion-text-center">
+      <ion-row class="table-main">
+        <ion-col>
+          <ion-title>
+            <ion-text>Roles</ion-text>
+          </ion-title>
+        </ion-col>
+      </ion-row>
+        <ion-row class="table-header">
+        <ion-col class="table-col" size="6">
+          <ion-text>Role Name</ion-text>
+        </ion-col>
+        <ion-col class="table-col" size="6">
+          <ion-text>Edit Role</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row class="table-row" *ngFor="let rl of rolesList | filter: searchTerm">
+        <ion-col class="table-col" size="6">
+          <ion-text>{{rl.normalizedName}}</ion-text>
+        </ion-col>
+        <ion-col class="table-col" size="6">
+         <ion-button expand="block" color="secondary" [routerLink]="['edit-user-role', rl.id]" >Edit Role</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

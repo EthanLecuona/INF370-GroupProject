@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>  
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','add-license-code']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add License Code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="addLicenseCodeForm" class="addLicenseCodeForm">
+          <label id="label" class="text-center" font-weight="bold">Add License Code</label>
+          <br>
+          <br>
+          <ion-item >
+            <ion-label position="floating">License Code</ion-label>
+            <ion-input class="form-control" type="text" autocapitalize="words" formControlName="code"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="addLicenseCodeForm.get('code').invalid && (addLicenseCodeForm.get('code').dirty || addLicenseCodeForm.get('code').touched)"class="alert alert-danger">
+            <label id="errortext">License Code required.</label>
+          </div>
+          <br>
+          <ion-button class="button" color="success" [disabled]="!addLicenseCodeForm.valid" (click)="addLicenseCode()">Add</ion-button>
+          <ion-button class="button" color="danger" href="driver/license">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-searchbar class="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col sizeLg="3" sizeMd="3" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="6" sizeMd="6" sizeSm="8" sizeXs="12" class="the-table">
+          <ion-grid id="companyGrid" class="ion-text-center table">
+            <ion-row >
+              <ion-col class="table-main no-padding">
+                <ion-title>
+                  <ion-text color="default" >License Codes</ion-text>
+                </ion-title>
+              </ion-col>
+            </ion-row>
+              <ion-row class="table-header">
+                <ion-col class="table-col" size="6">
+                  <ion-text>License Codes</ion-text>
+                </ion-col>
+                <ion-col class="table-col" size="6">
+                  <ion-text>Remove Code</ion-text>
+                </ion-col>
+            </ion-row>
+            <ion-row class="table-row" *ngFor="let lcode of licenseCodeList | filter: searchTerm">
+              <ion-col class="table-col" size="6">
+                <ion-text>{{lcode.licenseCode1}}</ion-text>
+              </ion-col>
+              <ion-col class="table-col" size="6">
+               <ion-button class="view-code" color="primary"  [routerLink]="['/driver/license/edit-licenscode', lcode.licenseCodeId]">View Code</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </ion-col>
+      <ion-col sizeLg="3" sizeMd="3" sizeSm="2" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  
+
+
+</ion-content>

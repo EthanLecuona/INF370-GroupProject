@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="onCancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Pick a Location</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <input
+  id="pac-input"
+  class="controls"
+  type="text"
+  placeholder="Search for Location"/>
+  <div class="map" #map></div>
+</ion-content>

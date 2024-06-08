@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','view-project']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>View Project</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="6" sizeSm="6" sizeXs="12">
+        <form class="viewProjectForm" *ngFor="let p of viewProject">
+          <label class="title" font-weight="bold">View Project</label>
+          <br>
+          <br>
+          <ion-item id="pName">
+            <ion-grid>
+              <ion-row class="text-center">
+                  <ion-label>Project Name:</ion-label>
+              </ion-row>
+              <ion-row id="botRow">
+                  <ion-input type="text" readonly="true">{{p.projectName}}</ion-input>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <br>
+          <ion-item text-wrap id="pDescription">
+            <ion-grid>
+              <ion-row class="text-center">
+                <ion-label >Project Description:</ion-label>
+              </ion-row>
+              <ion-row id="botRow">
+                <ion-input readonly="true">{{p.description}}</ion-input>
+              </ion-row>
+            </ion-grid>
+            <br>
+          </ion-item>
+          <br>
+          <ion-item>
+            <div *ngFor="let c of companyNames">
+              <ion-grid>
+                <ion-row class="text-center">
+                  <ion-label >Company Name:</ion-label>
+                </ion-row>
+                <ion-row id="botRow">
+                  <ion-input readonly="true">{{c.companyName}}</ion-input>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-item>
+          <br>
+          <ion-button expand="block" color="success" (click)="presentAlertComplete(p.projectId)">Mark as Complete</ion-button>
+          <ion-button expand="block" color="primary" href="/admin/project">Back</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

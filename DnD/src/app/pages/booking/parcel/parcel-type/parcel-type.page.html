@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','configure-parcel-type']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Configure Parcel Type</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0"></ion-col>
+        <ion-col class="addConfidentForm" sizeLg="4" sizeMd="6" sizeSm="6" sizeXs="12">
+          <form class="addParcelTypeForm" [formGroup]="addTypeForm">
+            <ion-item>
+              <ion-label position="floating">Parcel Type:</ion-label>
+              <ion-input type="text" formControlName="description" placeholder="E.g. Contracts, Money"></ion-input>
+            </ion-item>
+            <br>
+            <div *ngIf="addTypeForm.get('description').invalid && (addTypeForm.get('description').dirty || addTypeForm.get('description').touched)"class="alert alert-danger">
+              <label id="errortext">Parcel Type required</label>
+            </div>
+            <br />
+            <ion-button class="Button" color="success" (click)="addType()" [disabled]="!addTypeForm.valid">Add</ion-button>
+            <ion-button class="Button" color="primary" href="booking">Cancel</ion-button>
+          </form>
+        </ion-col>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+    
+
+  
+  <form class="typeForm">
+    <ion-grid class="parcel-types ion-text-center table" >
+      <ion-row>
+        <ion-col class="table-main">
+          <ion-title>
+            <ion-text color="default">Existing Parcel Types</ion-text>
+          </ion-title>
+        </ion-col>
+      </ion-row>
+      <ion-row class="table-header">
+        <ion-col class="table-col" size="6">
+          <ion-text>Parcel Type</ion-text>
+        </ion-col>
+        <ion-col class="table-col" size="6">
+          <ion-text>Configure Parcel Type</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row class="table-row" *ngFor="let type of typeList">
+        <ion-col class="table-col" size="6">
+          <ion-text>{{type.description}}</ion-text>
+        </ion-col>
+        <ion-col class="table-col" size="6">
+             <ion-button class="Button" color="danger" (click)="Alert(type.parcelTypeId)">Delete</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

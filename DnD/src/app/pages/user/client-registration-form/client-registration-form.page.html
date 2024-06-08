@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons>  
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','empclientregister']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Client Registration Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col class="container" sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <ion-row>
+          <ion-col size="12">
+            <form [formGroup]="registerClient" id="registerClient">
+
+              <ion-label class="heading">Register Client</ion-label>
+              <ion-item>
+                <ion-label position="floating">Client Email Address:</ion-label>
+                <ion-input type="text" formControlName="email"></ion-input>
+              </ion-item>
+              <br>
+              <div *ngIf="registerClient.get('email').invalid && (registerClient.get('email').dirty || registerClient.get('email').touched)"class="alert alert-danger">
+                <label id="errortext">A valid email consist of a @ symbol as well as end address such as .com</label>
+              </div>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Client Associated Company:</ion-label>
+                <ion-select interface="popover" formControlName="company" >
+                  <ion-select-option  *ngFor="let comp of activeCompanies let i = index" value="{{[comp.companyId, i]}}">{{comp.companyName}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <br>
+              <div *ngIf="registerClient.get('company').invalid && (registerClient.get('company').dirty || registerClient.get('company').touched)"class="alert alert-danger">
+                <label id="errortext">Company required</label>
+              </div>
+              <br>
+              <div class="footer">
+                <ion-button id="Button" color="success" (click)="addClient()" [disabled]="!registerClient.valid">Add</ion-button>
+                <ion-button href="employee" id="Button" color="primary" >Cancel</ion-button>
+              </div>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

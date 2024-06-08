@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','reports']"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <div class="header">
+      <ion-buttons slot="start">
+        <ion-menu-button color="dark"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Reports
+      </ion-title>
+      <ion-button color="primary" class="settings" (click)="presentPopover($event)" ion-button icon-only clear>
+        Reports
+        <ion-icon name="document-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-popover #popover [dismissOnSelect]="true" [isOpen]="isOpen" (didDismiss)="isOpen = false">
+      <ng-template>
+     
+          <ion-list>
+            <ion-item (click)="bookingCancel()">Booking Cancellation Report</ion-item>
+            <ion-item (click)="vehicleReport()">Vehicle Report</ion-item>
+            <ion-item (click)="maintenance()">Maintenance Report</ion-item>
+            <ion-item (click)="driverReport()">Driver Report</ion-item>
+            <ion-item (click)="fuelReport()">Fuel Report</ion-item>
+            <ion-item (click)="auditLogReport()">Audit Log Report</ion-item>
+          </ion-list>
+ 
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <div class="grid-box">
+          <ion-text>Bookings Placed</ion-text><br>
+          <ion-title>{{bookingsPlacedCount}}</ion-title>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="grid-box">
+          <ion-text>Bookings Completed</ion-text><br>
+          <ion-title>{{bookingsCompletedCount}}</ion-title>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="grid-box">
+          <ion-text>Bookings in Progress</ion-text><br>
+          <ion-title>{{bookingsInProgressCount}}</ion-title>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4"></ion-col>
+      <ion-col size="4">
+        <div class="grid-box">
+          <ion-text>Bookings Cancelled</ion-text>
+          <ion-title>{{bookingsCancelledCount}}</ion-title>
+        </div>
+      </ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <div class="grid-box">
+          <ion-text>Refuels</ion-text><br>
+          <ion-title>{{refuelCount}}</ion-title>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="grid-box">
+          <ion-text>Total Cost of Fuel</ion-text><br>
+          <ion-title>R {{totalFuel}}</ion-title>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="grid-box">
+          <ion-text>Avg Refuel Cost</ion-text><br>
+          <ion-title>R {{avgCostFuel}}</ion-title>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <div class="grid-box">
+          <ion-text>Total Users</ion-text><br>
+          <ion-title>{{totalUsersCount}}</ion-title>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="grid-box">
+          <ion-text>Incidents Count</ion-text><br>
+          <ion-title>{{incidentCount}}</ion-title>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4"></ion-col>
+      <ion-col size="4">
+        <div class="grid-box">
+          <ion-text>Maintenances</ion-text><br>
+          <ion-title>{{maintenanceCount}}</ion-title>
+        </div>
+      </ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col sizeLg="2" sizeMd="1" sizeSm="0" sizeXs="0"></ion-col>
+      <ion-col sizeLg="8" sizeMd="10" sizeSm="12" sizeXs="12">
+        <br>
+        <canvas #lineChart>
+        </canvas>
+      </ion-col>
+      <ion-col sizeLg="2" sizeMd="1" sizeSm="0" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

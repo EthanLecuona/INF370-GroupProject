@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','edit-model']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Edit Model</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="editVehicleModelForm" class="editVehicleModelForm">
+          <label class="title" font-weight="bold">Edit Vehicle Model</label>
+          <ion-item >
+            <ion-label position="floating">Model Code</ion-label>
+            <ion-input type="text" formControlName="modelCode"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="editVehicleModelForm.get('modelCode').invalid && (editVehicleModelForm.get('modelCode').dirty || editVehicleModelForm.get('modelCode').touched)"class="alert alert-danger">
+          <label id="errortext">Model Title required</label>
+          </div>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Model Title</ion-label>
+            <ion-input type="text" formControlName="modelTitle"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="editVehicleModelForm.get('modelTitle').invalid && (editVehicleModelForm.get('modelTitle').dirty || editVehicleModelForm.get('modelTitle').touched)"class="alert alert-danger">
+          <label id="errortext">Model Title required</label>
+          </div>
+          <br>
+          <ion-button expand="block" color="success" (click)="editModelAlert()" >Edit</ion-button>
+          <ion-button expand="block" color="primary" href="admin/vehicle/manufacturer-model/model">Cancel</ion-button>
+          <ion-button expand="block" color="danger" (click)="delModelAlert()" color="danger">Delete</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

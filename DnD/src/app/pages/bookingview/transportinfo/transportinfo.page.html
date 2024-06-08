@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','transport-info']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Transport Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="tabs">
+    <ion-row>
+      <ion-col size="12">   
+        <h1>Transport Booking : #{{bookingId}}</h1>
+        <!-- <p>Status: {{status}}</p> -->
+      </ion-col>
+    </ion-row>
+    <ion-segment class="tabs" value="bookinginfo">
+      <ion-button (click)="back()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+      <ion-segment-button value="info">
+        <ion-label>Transport Information</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+   <ion-row>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col >
+     <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+      <form [formGroup]="eventForm" id="addEventForm" class="form-inline justify-content-center">
+        <h2 id="label" class="text-center" font-weight="bold">Event Details</h2>
+        <br>
+        <ion-item>
+          <ion-label  position="floating">Number of Employees</ion-label>
+          <ion-input value="number" formControlName="NumberOfEmployees" readonly=""></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea formControlName="Description" readonly=""></ion-textarea>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label position="floating">Location</ion-label>
+          <ion-textarea formControlName="Location" readonly=""></ion-textarea>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label position="floating">Date of Event</ion-label>
+          <ion-input value="number" formControlName="EventDate" readonly=""></ion-input>
+        </ion-item>
+        <br>
+        <ion-button class="button" color="danger" (click)="cancelTransportAlert()">Cancel Booking</ion-button>
+        <br>
+      </form>
+     </ion-col>
+    <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col >
+   </ion-row>
+   <ion-modal id="cancel-modal" #modal trigger="open-modal">
+    <ng-template>
+      <div class="wrapper">
+        <h1>Cancellation Reason</h1>
+        <ion-list lines="none">
+          <ion-item button="true" detail="false" (click)="cancelBooking('Not available on day of transportation.')">
+            <ion-label>Not available on day of transportation.</ion-label>
+          </ion-item>
+          <ion-item button="true" detail="false" (click)="cancelBooking('Incorrect transporrt details.')">
+            <ion-label>Incorrect transport details.</ion-label>
+          </ion-item>
+          <ion-item button="true" detail="false" (click)="cancelBooking('Event date moved.')">
+            <ion-label>Event date moved.</ion-label>
+          </ion-item>
+          <ion-item button="true" detail="false" (click)="cancelBooking('Other Reason.')">
+            <ion-label>Other Reason.</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ng-template>
+</ion-modal>
+</ion-content>

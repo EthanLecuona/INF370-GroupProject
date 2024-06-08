@@ -1,0 +1,40 @@
+  <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','add-incident']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add Incident</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="addIncidentForm" class="addIncidentForm">
+          <ion-label class="title">Add Incident</ion-label>
+          <ion-item >
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea class="form-control" type="text" autocapitalize="words" formControlName="description" placeholder="E.g. Flat Tire"></ion-textarea>
+          </ion-item>
+          <br>
+          <div *ngIf="addIncidentForm.get('description').invalid && (addIncidentForm.get('description').dirty || addIncidentForm.get('description').touched)"class="alert alert-danger">
+            <label id="errortext">Description required.</label>
+          </div>
+          <br>
+          <ion-button expand="block" color="success" [disabled]="!addIncidentForm.valid" (click)="addIncident()">Add</ion-button>
+          <ion-button expand="block" color="danger" href="/driver/incident">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+ 
+
+</ion-content>

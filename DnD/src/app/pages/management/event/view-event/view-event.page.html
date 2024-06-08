@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','view-event']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>View Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+      <ion-col class="container" sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="viewEventForm" class="viewEventForm">
+          <ion-label class="heading">View Event</ion-label>
+          <ion-item color="white" lines="none">
+            <ion-label position="floating">Event ID</ion-label>
+            <ion-input value="number" formControlName="eventId" min="1" placeholder="1" required="true" readonly="true"></ion-input>
+          </ion-item>
+          <ion-item color="white" lines="none">
+            <ion-label position="floating">Number of Employees</ion-label>
+            <ion-input value="number" formControlName="numberOfEmployees" min="1" placeholder="1" required="true" readonly="true"></ion-input>
+          </ion-item>
+          <ion-item color="white" lines="none">
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea formControlName="description" max="200" min="1" placeholder="Description of the event" required="true" readonly="true"></ion-textarea>
+          </ion-item>
+          <ion-item color="white" lines="none">
+            <ion-label position="floating">Location</ion-label>
+            <ion-textarea formControlName="location" max="100" min="1" placeholder="Location of the event" required="true" readonly="true"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-datetime color="dark" class="calendar" formControlName="EventDate" displayFormat="YYYY/MM/DD" presentation="date-time" min="{{currentDate}}" [(ngModel)]="newDate">
+            </ion-datetime>
+          </ion-item>
+          <ion-button (click)="Cancel()">Go Back</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

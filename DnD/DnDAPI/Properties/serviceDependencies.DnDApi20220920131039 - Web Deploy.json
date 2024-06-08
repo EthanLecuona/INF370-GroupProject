@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "identityapp1": {
+      "ignored": "true",
+      "type": "identityapp"
+    },
+    "mssql1": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:DefaultConnection"
+    },
+    "apis2": {
+      "apiEndpoint": "https://dndapi.azure-api.net/v1",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/DnDapi/apis/dndapi",
+      "type": "apis.azure"
+    }
+  }
+}

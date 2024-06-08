@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="dark"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','add-mechanic']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Add Mechanic</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="1.5"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="9">
+        <form class="addMechanicForm" [formGroup]="addMechanicForm">
+          <label class="title" font-weight="bold">Add Mechanic</label>
+          <br>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Mechanic Name</ion-label>
+            <ion-input type="text" formControlName="mechanicName"></ion-input>
+          </ion-item>
+          <br>
+          <div *ngIf="addMechanicForm.get('mechanicName').invalid && (addMechanicForm.get('mechanicName').dirty || addMechanicForm.get('mechanicName').touched)"class="alert alert-danger">
+          <label id="errortext">Mechanic name required</label>
+          </div>
+          <br>
+          <ion-item >
+            <ion-label position="floating">Email Address</ion-label>
+            <ion-input type="text" formControlName="email"></ion-input>
+          </ion-item>
+          <div *ngIf="addMechanicForm.get('email').invalid && (addMechanicForm.get('email').dirty || addMechanicForm.get('email').touched)"class="alert alert-danger">
+            <label id="errortext">Invalid Email Address</label>
+          </div>
+          <br>
+          <br>
+          <ion-button expand="block" id="Button" color="success" [disabled]="!addMechanicForm.valid" (click)="addMechanicAlert()">Add</ion-button>
+          <ion-button expand="block" id="Button" color="primary" href="admin/vehicle/maintenance">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="1.5"></ion-col>
+    </ion-row>
+    </ion-grid>
+    <ion-grid>
+    <ion-row>
+      <ion-searchbar id="searchBar" placeholder="Search" [(ngModel)]="searchTerm" showCancelButton="focus" animated="true"></ion-searchbar>
+      <ion-col size="12" class="table">
+          <ion-row class="table-main">
+            <ion-col size="12">
+              <ion-title>
+                <ion-text color="default" >Mechanics</ion-text>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+            <ion-row class="header-row">
+            <ion-col class="table-col" size="4">
+              <ion-text>Mechanic Name</ion-text>
+            </ion-col>
+            <ion-col  class="table-col" size="4">
+              <ion-text>Mechanic Email Address</ion-text>
+            </ion-col>
+            <ion-col  class="table-col" size="4">
+              <ion-text>Remove Mechanic</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="table-row" *ngFor="let mech of mechanicList | filter: searchTerm">
+            <ion-col class="table-col" size="4">
+              <ion-text>{{mech.mechanicName}}</ion-text>
+            </ion-col>
+            <ion-col  class="table-col" size="4">
+              <ion-text>{{mech.mechanicEmail}}</ion-text>
+            </ion-col>
+            <ion-col class="table-col" size="4">
+            <ion-button expand="block" color="danger" (click)="delMechanic(mech.mechanicId)" >Delete</ion-button>
+            </ion-col>
+          </ion-row>
+        
+       
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

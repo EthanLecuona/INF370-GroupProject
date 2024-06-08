@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','assign-user-role']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Assign User Roles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="6" sizeXs="12">
+        <form [formGroup]="assignForm" class="assignForm">
+          <ion-item>
+            <ion-label>Employee Name</ion-label>
+            <ion-select interface="popover" formControlName="EmployeeName">
+              <ion-select-option  *ngFor="let emp of empList" value="{{emp.id}}">{{emp.firstname}} {{emp.lastname}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <br>
+          <div *ngIf="assignForm.get('EmployeeName').invalid && (assignForm.get('EmployeeName').dirty || assignForm.get('EmployeeName').touched)"class="alert alert-danger">
+            <label id="errortext">Select a Employee.</label>
+          </div>
+          <br>
+          <ion-item>
+            <ion-label>Role Name</ion-label>
+            <ion-select interface="popover" formControlName="RoleName">
+              <ion-select-option  *ngFor="let rl of roleList" value="{{rl.name}}"> {{rl.name}} </ion-select-option>
+            </ion-select>
+
+          </ion-item>
+          <br>
+          <div *ngIf="assignForm.get('RoleName').invalid && (assignForm.get('RoleName').dirty || assignForm.get('RoleName').touched)"class="alert alert-danger">
+            <label id="errortext">Select a Role.</label>
+          </div>
+          <br>
+                 <br>
+           <ion-button expand="block" id="updateBtn" color="success" (click)="addAlert()" >Assign Role</ion-button>
+           <ion-button expand="block" href="admin/user/add-user-role" id="cancelBtn" color="primary">Cancel</ion-button>
+
+
+        </form>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeSm="3" sizeXs="0" class="spacer"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" id="helpicon">
+      <ion-button [routerLink]="['help','edit-event']" color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Edit Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="2" sizeXs="0"></ion-col>
+      <ion-col class="container" sizeLg="4" sizeMd="6" sizeSm="8" sizeXs="12">
+        <ion-row>
+          <ion-col size="12">
+            <form [formGroup]="editEventForm" class="editEventForm">
+              <h1  class="text-center" font-weight="bold">Update Event</h1>
+              <ion-item color="white">
+                <ion-label position="floating">Number of Employees</ion-label>
+                <ion-input value="number" formControlName="numberOfEmployees" min="1" placeholder="1" required="true"></ion-input>
+              </ion-item>
+              <br>
+              <div *ngIf="editEventForm.get('numberOfEmployees').invalid && (editEventForm.get('numberOfEmployees').dirty || editEventForm.get('numberOfEmployees').touched)"class="alert alert-danger">
+                <label id="errortext">Please state the number of employees going to the event</label>
+              </div>
+              <ion-item color="white">
+                <ion-label position="floating">Description</ion-label>
+                <ion-textarea formControlName="description" max="200" min="1" placeholder="Description of the event" required="true"></ion-textarea>
+              </ion-item>
+              <br>
+              <div *ngIf="editEventForm.get('description').invalid && (editEventForm.get('description').dirty || editEventForm.get('description').touched)"class="alert alert-danger">
+                <label id="errortext">Please add a description of the event</label>
+              </div>
+              <ion-item color="white">
+                <ion-label position="floating">Location</ion-label>
+                <ion-textarea formControlName="location" max="100" min="1" placeholder="Location of the event" required="true"></ion-textarea>
+              </ion-item>
+              <br>
+              <div *ngIf="editEventForm.get('location').invalid && (editEventForm.get('location').dirty || editEventForm.get('location').touched)"class="alert alert-danger">
+                <label id="errortext">Please add the location of the event</label>
+              </div>
+              <br>
+              <br>
+              <ion-item>
+                <ion-datetime color="dark" class="calendar" formControlName="EventDate" displayFormat="YYYY/MM/DD" presentation="date-time" min="{{currentDate}}" [(ngModel)]="newDate">
+                  <span slot="title">Select event date and time</span>
+                </ion-datetime>
+              </ion-item>
+              <br>
+              <ion-button expand="block" color="success" [disabled]="!editEventForm.valid" (click)="updateEvent()">Update Event</ion-button>
+              <ion-button expand="block" color="danger" (click)="Cancel()">Cancel</ion-button>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="3" sizeSm="2" sizeXs="0"></ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+  </ion-content>
+  
