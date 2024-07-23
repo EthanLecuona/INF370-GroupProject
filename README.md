@@ -25,7 +25,7 @@ We got tasked to solve a business problem for any company. Our team had the oppo
 The problem was to solve the transport of confidential documents and personnel during the Covid-19 pandemic. In turn this gave us the opportunity to create DnD.
 
 The business requirements:
-* Authentication for login and register. Concerning users, admins and drivers.
+* Authentication for login and register for users, admins and drivers.
 * Bookings for parcels, documents, and transportation incorporated into a calandar.
 * QR system for packages.
 * Tracking of packages and completed deliveries and routes.
