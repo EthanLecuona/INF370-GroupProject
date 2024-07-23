@@ -33,7 +33,7 @@ The business requirements:
 * Multiple driver schedules.
 * Messaging and comment system to communicate with drivers and other personnel.
 * Mobile and Web friendly.
-* Reporting parcels and documents delivered. Transportation, vehicle and driver statistics. 
+* Reporting on parcels and documents delivered. Transportation, vehicle, driver and system usage statistics. 
 
 
 
