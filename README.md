@@ -28,9 +28,12 @@ The business requirements:
 * Authentication for login and register. Concerning users, admins and drivers.
 * Bookings for parcels, documents, and transportation incorporated into a calandar.
 * QR system for packages.
-* Tracking of packages and completed deliveries.
+* Tracking of packages and completed deliveries and routes.
 * Vehicle registration and maintenance schedules.
+* Multiple driver schedules.
 * Messaging and comment system to communicate with drivers and other personnel.
+* Mobile and Web friendly.
+* Reporting parcels and documents delivered. Transportation, vehicle and driver statistics. 
 
 
 
